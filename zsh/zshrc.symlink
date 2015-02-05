@@ -1,13 +1,13 @@
 # shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/Dropbox/Shared\ Libraries/dotfiles
-export DOTFILES=$HOME/Dropbox/Shared\ Libraries/dotfiles
+export ZSH=$HOME/Dropbox/Shared/dotfiles
+export DOTFILES=$HOME/Dropbox/Shared/dotfiles
 export PROJECTS=~/Sites/bigcartel
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
 
 # editor
-export EDITOR=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+# export EDITOR=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -25,7 +25,7 @@ fi
 # completion #
 ##############
 
-source /Users/markupboy/Dropbox/Sites/github/forks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /Users/markupboy/Dropbox/Sites/github/forks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # initialize autocomplete here, otherwise functions won't be loaded
 
