@@ -12,7 +12,7 @@ alias getpath='echo -n $PWD|pbcopy|echo "current path copied to clipboard"'
 alias ping='ping -oq'
 alias top='top -o cpu'
 alias getip="getIP"
-alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack -a'
+alias ack='ACK_PAGER_COLOR="less -x4SRFX" ack'
 alias st="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ."
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
