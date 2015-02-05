@@ -32,3 +32,8 @@ fi
 zmodload zsh/complist
 autoload -Uz compinit && compinit
 ### Added by the Heroku Toolbelt
+
+export GOPATH=$HOME/Projects/Go
+export PATH=$PATH:$GOPATH/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
