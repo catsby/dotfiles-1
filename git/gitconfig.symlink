@@ -76,6 +76,7 @@
   ri  = rebase -i HEAD~10
   ; Probably should use this often
   ro  = !git fetch origin && git reset --hard origin/master
+  pr = "!f() { git fetch upstream pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
 
 [merge]
   log = true
