@@ -90,7 +90,7 @@
   user = catsby
 
 [push]
-	default                 = tracking
+	default                 = current
 [diff]
 	tool                    = diffmerge
 [difftool "diffmerge"]

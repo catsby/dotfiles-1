@@ -1,5 +1,7 @@
-if [[ -a ~/.rbenv ]]
-then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-eval "$(rbenv init -)"
+# This is in ~/.zshrc as well, shouldn't need this here
+#if [[ -a ~/.rbenv ]]
+#then
+#	echo "hello world"
+#  export PATH="$HOME/.rbenv/bin:$PATH"
+#fi
+#eval "$(rbenv init -)"
