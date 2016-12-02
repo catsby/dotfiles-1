@@ -1,0 +1,38 @@
+set -g default-terminal "screen-256color"
+
+# Setting the prefix from C-b to C-a
+set -g prefix C-a
+
+# Free the original Ctrl-b prefix keybinding
+unbind C-b
+
+#setting the delay between prefix and command
+set -s escape-time 1
+
+# Set the base index for windows to 1 instead of 0
+set -g base-index 1
+
+# Set the base index for panes to 1 instead of 0
+setw -g pane-base-index 1
+
+# Binding to reload tmux conf
+bind r source-file ~/.tmux.conf \; display "reloaded!"
+
+# Send cntrl-a through with double hit
+bind C-a send-prefix
+
+# make splitting panes easier, more logical
+bind | split-window -h
+bind - split-window -v
+
+# moving between panes with Prefix h,j,k,l
+bind h select-pane -L 
+bind j select-pane -D 
+bind k select-pane -U 
+bind l select-pane -R
+
+# resize panes
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
