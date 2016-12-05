@@ -1,5 +1,3 @@
-set -g default-terminal "screen-256color"
-
 # Setting the prefix from C-b to C-a
 set -g prefix C-a
 
@@ -36,3 +34,41 @@ bind -r H resize-pane -L 5
 bind -r J resize-pane -D 5
 bind -r K resize-pane -U 5
 bind -r L resize-pane -R 5
+
+# enable the mouse because I'm a Muggle
+set -g mouse on
+
+# do some color things
+#set -g default-terminal "screen-256color"
+#
+## status line 
+#set -g status-style fg=white,bold,bg=black
+#set -g window-status-style fg=colour141,bg=black
+#set -g window-status-current-style fg=colour232,bold,bg=colour141
+#
+## colors for pane borders
+#setw -g pane-border-style fg=colour141,bg=black
+## setw -g pane-active-border-style fg=white,bg=white
+#
+## active pane normal, other shaded out
+#setw -g window-style fg=colour240,bg=colour234
+#setw -g window-active-style fg=white,bg=black
+#
+## Command / message line
+#set -g message-style fg=white,bold,bg=black
+#
+## Status line right side -  31-Oct 13:37
+#set -g status-right "#[fg=cyan]%d %b %R"
+#
+## Update the status line every sixty seconds
+#set -g status-interval 3600
+#
+## Center the window list in the status line
+#set -g status-justify centre
+#
+## enable activity alerts
+#setw -g monitor-activity on
+#set -g visual-activity on
+
+# enable theme
+source-file "${HOME}/.tmux-themepack/powerline/block/cyan.tmuxtheme"
