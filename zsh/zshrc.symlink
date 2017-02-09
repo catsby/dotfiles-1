@@ -35,8 +35,6 @@ export PATH=/Users/clint/Projects/Go/src/github.com/hashicorp/terraform:$PATH
 
 eval "$(rbenv init -)"
 
-# aws cli thing
-source /usr/local/share/zsh/site-functions/_aws
 # added by travis gem
 [ -f /Users/clint/.travis/travis.sh ] && source /Users/clint/.travis/travis.sh
 

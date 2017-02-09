@@ -9,7 +9,5 @@ else
 fi
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/git/libexec/git-core:$PATH"
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-export EDITOR='mate -w'
-export EDITOR="$DOTFILES/bin/editor"
+export EDITOR='mvim -v'
 export PATH="/usr/local/heroku/bin:$PATH"
