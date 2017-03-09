@@ -95,5 +95,5 @@ bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 bind C-l send-keys 'C-l'
 
 set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh" 
-bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"; display "copied!"
+bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"

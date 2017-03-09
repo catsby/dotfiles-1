@@ -1,0 +1,49 @@
+ZSH_THEME="sorin"
+
+alias dirs="ls -la | grep '^d'"
+alias mdiff="git diff > d.diff && mate d.diff"
+
+alias rb="rbenv"
+alias rr="rbenv rehash"
+alias f="forego"
+alias gf="go fmt"
+alias gr="go run"
+alias b="bundle exec"
+
+alias tt="cd /Users/clint/Projects/Go/src/github.com/hashicorp/terraform"
+alias ty="open ~/Dropbox/Tycho.sparsebundle"
+
+alias rm="nocorrect rm"
+
+function parse_git_branch {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "["${ref#refs/heads/}"]"
+}
+
+# PS1="[\$(date +%H:%M)] \w \$(parse_git_branch)\$ " 
+PROMPT='%{$fg[cyan]%}[%3/]%(?.%{$fg[green]%}.%{$fg[red]%})$(parse_git_branch)(%L)%B$%b '
+#PROMPT='[%2/]%B$%b '
+export PATH=$PATH:/Users/clint/Projects/scripts
+
+alias h="heroku"
+alias b2="boot2docker"
+
+alias tf="terraform"
+#alias tf="/Users/clint/Projects/tf-versions/v0_6_16/terraform"
+#alias terraform="/Users/clint/Projects/tf-versions/v0_6_16/terraform"
+
+alias yt="youtube-dl"
+
+alias dcu="docker-compose up"
+
+export TRELLO_KEY=ecde242ffb1655fa311c3ab7e17e4ef1
+export TRELLO_TOKEN=f618b746d496156b66828cb280f9300e08baef54b3e7addc93aa16af0ecad453
+
+alias t="tmux"
+alias tk="tmux kill-session"
+
+# Make sure colors are right
+export TERM="xterm-256color"
+
+# maybe temp rename mvim
+alias mvim="mvim -v"

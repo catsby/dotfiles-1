@@ -1,6 +1,10 @@
 # shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/Dropbox/Shared/dotfiles
-export DOTFILES=$HOME/Dropbox/Shared/dotfiles
+#export ZSH=$HOME/Dropbox/Shared/dotfiles
+export ZSH=$HOME/Dropbox\ (Personal)/Shared/dotfiles
+
+#export DOTFILES=$HOME/Dropbox/Shared/dotfiles
+export DOTFILES=$HOME/Dropbox\ (Personal)/Shared/dotfiles
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
