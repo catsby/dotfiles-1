@@ -1,8 +1,7 @@
-# ~/.tmuxinator/tf.yml
+# ~/.tmuxinator/hcdemo.yml
 
-name: tf
-root: /Users/clint/Projects/Go/src/github.com/terraform-providers
-
+name: hcdemo
+root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo
 
 # Optional tmux socket
 # socket_name: foo
@@ -32,7 +31,43 @@ root: /Users/clint/Projects/Go/src/github.com/terraform-providers
 # post: tmux -CC attach -t tf
 
 windows:
-  - aws:
+  - main:
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        -
+        - envchain hcdemo $SHELL
+  - heroku:
+      root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo/herokuchat
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - 
+        - envchain hcdemo $SHELL
+  - lambda:
+      root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo/lambda
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - 
+        - envchain hcdemo $SHELL
+  - nothingtoseehere:
+      root: /Users/clint/Projects/Go/src/github.com/catsby/terraform-provider-twitch
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - 
+        - envchain hcdemo $SHELL
+
+  - alsonothing:
       root: /Users/clint/Projects/Go/src/github.com/terraform-providers/terraform-provider-aws
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
@@ -40,50 +75,5 @@ windows:
       # synchronize: after
       panes:
         - 
-        - envchain aws-tf $SHELL
+        - envchain hcdemo $SHELL
 
-          #  - gcp:
-          #      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-          #      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-          #      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-          #      # synchronize: after
-          #      root: /Users/clint/Projects/Go/src/github.com/terraform-providers/terraform-provider-google
-          #      panes:
-          #        - 
-          #        - envchain google $SHELL
-  - core: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-  - website: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform-website
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-  - tfdeploy: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/tf-deploy
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-  - tf-repos: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform-repositories
-      panes:
-        -
-        -

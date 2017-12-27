@@ -1,7 +1,7 @@
-# ~/.tmuxinator/scrap.yml
+# ~/.tmuxinator/tfteam.yml
 
-name: scrap
-root: /Users/clint/Projects/Go/src/github.com/catsby/scrap
+name: tfteam
+root: /Users/clint/Projects/Go/src/github.com/catsby/tfteam
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,11 +31,11 @@ root: /Users/clint/Projects/Go/src/github.com/catsby/scrap
 # post: tmux -CC attach -t tf
 
 windows:
-  - mvim:
+  - nvim:
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        -
-        -
+        - nvim
+        - envchain tfteam $SHELL

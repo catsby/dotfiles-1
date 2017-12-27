@@ -1,7 +1,7 @@
-# ~/.tmuxinator/scrap.yml
+# ~/.tmuxinator/blue.yml
 
-name: scrap
-root: /Users/clint/Projects/Go/src/github.com/catsby/scrap
+name: blue
+root: /Users/clint/Projects/Go/src/github.com/catsby/blue/chat
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,7 +28,7 @@ root: /Users/clint/Projects/Go/src/github.com/catsby/scrap
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t tf
+# post: tmux -CC attach -t blue
 
 windows:
   - mvim:
@@ -37,5 +37,5 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        -
-        -
+        - mvim
+        - envchain blue $SHELL 
