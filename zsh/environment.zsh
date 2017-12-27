@@ -9,5 +9,5 @@ else
 fi
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/git/libexec/git-core:$PATH"
-export EDITOR='mvim -v'
+export EDITOR='nvim'
 export PATH="/usr/local/heroku/bin:$PATH"

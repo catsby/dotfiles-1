@@ -20,8 +20,8 @@ bind r source-file ~/.tmux.conf \; display "reloaded!"
 bind C-a send-prefix
 
 # make splitting panes easier, more logical
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 # moving between panes with Prefix h,j,k,l
 bind h select-pane -L 
@@ -51,17 +51,17 @@ set -g mouse on
 ## setw -g pane-active-border-style fg=white,bg=white
 #
 ## active pane normal, other shaded out
-#setw -g window-style fg=colour240,bg=colour234
-#setw -g window-active-style fg=white,bg=black
+setw -g window-style fg=colour240,bg=colour234
+setw -g window-active-style fg=white,bg=black
 #
 ## Command / message line
-#set -g message-style fg=white,bold,bg=black
+set -g message-style fg=white,bold,bg=black
 #
 ## Status line right side -  31-Oct 13:37
-#set -g status-right "#[fg=cyan]%d %b %R"
+set -g status-right "#[fg=cyan]%d %b %R"
 #
 ## Update the status line every sixty seconds
-#set -g status-interval 3600
+set -g status-interval 3600
 #
 ## Center the window list in the status line
 #set -g status-justify centre

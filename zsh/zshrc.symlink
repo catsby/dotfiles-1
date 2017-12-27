@@ -1,9 +1,12 @@
+ZSH_THEME="sorin"
+#ZSH_THEME="gentoo""
+# ZSH_THEME="senzshell"
+
 # shortcut to this dotfiles path is $ZSH
 #export ZSH=$HOME/Dropbox/Shared/dotfiles
 export ZSH=$HOME/Dropbox\ (Personal)/Shared/dotfiles
 
-#export DOTFILES=$HOME/Dropbox/Shared/dotfiles
-export DOTFILES=$HOME/Dropbox\ (Personal)/Shared/dotfiles
+export DOTFILES=$HOME/Dropbox/Shared/dotfiles
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # source every .zsh file in this rep
@@ -25,10 +28,6 @@ fi
 # completion #
 ##############
 
-# source /Users/markupboy/Dropbox/Sites/github/forks/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# initialize autocomplete here, otherwise functions won't be loaded
-
 zmodload zsh/complist
 autoload -Uz compinit && compinit
 
@@ -36,8 +35,6 @@ export GOPATH=$HOME/Projects/Go
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 export PATH=/Users/clint/Projects/Go/src/github.com/hashicorp/terraform:$PATH
-
-eval "$(rbenv init -)"
 
 # added by travis gem
 [ -f /Users/clint/.travis/travis.sh ] && source /Users/clint/.travis/travis.sh
@@ -52,3 +49,9 @@ fi
 
 unsetopt correct
 unsetopt correct_all
+
+export NVM_DIR="/Users/clint/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+autoload -U +X bashcompinit && bashcompinit
+complete -C /Users/clint/Projects/Go/bin/terraform terraform

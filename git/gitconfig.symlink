@@ -8,7 +8,7 @@
 	excludesfile = /Users/clint/.gitignore
     whitespace   = fix,space-before-tab,tab-in-indent,trailing-space
 	autocrlf = input
-	editor = mvim -f
+	editor = nvim
 
 
 [color]
@@ -53,7 +53,8 @@
   ; - branch pointers
   ; Mostly the same as l with addition of author and date, 
   ; except custom formats don't show color
-  le  = log --pretty=format:"%h%x09%an%x09%ar%x09%s%x09%d" 
+  le  = log --pretty=format:"%Cgreen%h%Creset%x09%an%x09%ar%x09%s%x09%d" 
+  les  = log --pretty=format:"%Cgreen%H%Creset%x09%an%x09%ar%x09%s%x09%d" 
   ; Show a nice graph
   lg  = log --oneline --graph
   ; Show abbreviated status (so I can see the current branch)
