@@ -35,4 +35,5 @@ vim/vim.symlink/.netrwhist
 .DS_Store?
 ehthumbs.db
 Icon?
-Thumbs.db
+Thumbs.db.
+.DS_Store
