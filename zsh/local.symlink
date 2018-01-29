@@ -55,3 +55,11 @@ if [ -f '/Users/clint/Projects/cloud-google-sdk/path.zsh.inc' ]; then source '/U
 if [ -f '/Users/clint/Projects/cloud-google-sdk/completion.zsh.inc' ]; then source '/Users/clint/Projects/cloud-google-sdk/completion.zsh.inc'; fi
 
 export PATH=$PATH:/Users/clint/Projects/Go/src/github.com/blizzard/heroprotocol
+
+source ~/.bin/tmuxinator.zsh
+
+export GOENV_ROOT="$HOME/.goenv"
+eval "$(goenv init -)"
+
+# Add GPG key to env
+export GPG_TTY=$(tty)

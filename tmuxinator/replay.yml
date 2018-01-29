@@ -1,6 +1,7 @@
 # ~/.tmuxinator/replay.yml
 
-name: replay 
+name: replay
+root: /Users/clint/Projects/Go/src/github.com/catsby 
 
 windows:
   - heroprotocol:
