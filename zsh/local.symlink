@@ -28,11 +28,6 @@ alias tm="tmuxinator"
 alias tf="terraform"
 alias yt="youtube-dl"
 
-export TRELLO_KEY=ecde242ffb1655fa311c3ab7e17e4ef1
-export TRELLO_TOKEN=f618b746d496156b66828cb280f9300e08baef54b3e7addc93aa16af0ecad453
-
-# GitHub API token for tfteam project
-export GITHUB_API_TOKEN=04772d62c75b81edcee3ef78527a9761541bbb6b
 
 alias t="tmux"
 alias tk="tmux kill-session"
