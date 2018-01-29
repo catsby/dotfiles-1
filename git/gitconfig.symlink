@@ -102,3 +102,5 @@
 [mergetool "diffmerge"]
 	cmd                     = diffmerge --merge --result=\"$MERGED\"  \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustexitcode           = false
+[commit]
+	gpgsign = true
