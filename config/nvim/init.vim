@@ -16,6 +16,8 @@ Plug 'wincent/command-t', {
   \ }
 	
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'fatih/vim-hclfmt'
 Plug 'git://github.com/airblade/vim-gitgutter.git'
 Plug 'git@github.com:bkad/vim-terraform.git'
 Plug 'git@github.com:fatih/vim-go.git'
@@ -44,10 +46,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
-Plug 'dracula/vim'
+
 
 " Initialize plugin system
 call plug#end()
-
+color dracula
 
 source ~/.vimrc

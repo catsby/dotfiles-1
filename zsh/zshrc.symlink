@@ -1,9 +1,6 @@
 ZSH_THEME="sorin"
-#ZSH_THEME="gentoo""
-# ZSH_THEME="senzshell"
 
 # shortcut to this dotfiles path is $ZSH
-#export ZSH=$HOME/Dropbox/Shared/dotfiles
 export ZSH=$HOME/Dropbox/Shared/dotfiles
 
 export DOTFILES=$HOME/Dropbox/Shared/dotfiles
@@ -11,14 +8,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
-
-
-export GOPATH=$HOME/Projects/Go
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-# huh?
-#export PATH=/Users/clint/Projects/Go/src/github.com/hashicorp/terraform:$PATH
-
+ 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -55,5 +45,3 @@ export NVM_DIR="/Users/clint/.nvm"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -C /Users/clint/Projects/Go/bin/terraform terraform
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

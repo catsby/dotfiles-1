@@ -1,7 +1,7 @@
-# ~/.tmuxinator/trell.yml
+# Tmuxinator config for Go Programming Language
+# ~/.tmuxinator/gop.yml
 
-name: trell
-root: ~/
+name: gop
 
 # Optional tmux socket
 # socket_name: foo
@@ -28,16 +28,15 @@ root: ~/
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t trell
+# post: tmux -CC attach -t tf
 
 windows:
-  - editor:
-      layout: main-vertical
+  - nvim:
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      root: /Users/clint/Projects/Go/src/github.com/catsby/goprogramming
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
+        - nvim
+        - open /Applications/Kindle.app

@@ -19,6 +19,8 @@ syntax enable
 set background=dark
 " colorscheme badwolf
 
+set runtimepath+=/Users/clint/.local/share/nvim/plugged/dracula
+
 colorscheme dracula
 " colorscheme molokai
 
@@ -237,6 +239,7 @@ set splitright
 set splitbelow
 
 if has("statusline") && !&cp
+  colorscheme dracula
   set statusline=%<%f\ 
   set statusline+=%w%h%m%r 
   set statusline+=\ [%{getcwd()}]
@@ -310,8 +313,11 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 1
 " Set commandT file searcher
-" let g:CommandTFileScanner = "watchman"
+let g:CommandTFileScanner = "watchman"
 " let g:CommandTFileScanner = "git"
-let g:CommandTFileScanner = "find"
+" let g:CommandTFileScanner = "find"
 let g:CommandTAlwaysShowDotFiles = 1
 let g:go_def_reuse_buffer = 1
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['golint']

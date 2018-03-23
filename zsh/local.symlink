@@ -38,6 +38,7 @@ export TERM="xterm-256color"
 # maybe temp rename mvim
 alias mvim=nvim
 alias vim=nvim
+alias vi=nvim
 
 # protoc support
 export PATH=$PATH:$GOPATH/bin
@@ -53,8 +54,12 @@ export PATH=$PATH:/Users/clint/Projects/Go/src/github.com/blizzard/heroprotocol
 
 source ~/.bin/tmuxinator.zsh
 
+export GOPATH=$HOME/Projects/Go
+export PATH=$PATH:$GOPATH/bin
 export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
+export GOROOT=$(goenv prefix)
 
 # Add GPG key to env
 export GPG_TTY=$(tty)

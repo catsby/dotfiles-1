@@ -1,7 +1,8 @@
-# ~/.tmuxinator/hcdemo.yml
+# ~/.tmuxinator/tf.yml
 
-name: hcdemo
-root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo
+name: extend
+root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform-website
+
 
 # Optional tmux socket
 # socket_name: foo
@@ -31,49 +32,18 @@ root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo
 # post: tmux -CC attach -t tf
 
 windows:
-  - main:
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        -
-        - envchain hcdemo $SHELL
-  - heroku:
-      root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo/herokuchat
+  - website:
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - 
-        - envchain hcdemo $SHELL
-  - lambda:
-      root: /Users/clint/Projects/Go/src/github.com/catsby/hashiconf17demo/lambda
+        - 
+  - console: 
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - 
-        - envchain hcdemo $SHELL
-  - nothingtoseehere:
-      root: /Users/clint/Projects/Go/src/github.com/catsby/terraform-provider-twitch
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - 
-        - envchain hcdemo $SHELL
-
-  - alsonothing:
-      root: /Users/clint/Projects/Go/src/github.com/terraform-providers/terraform-provider-aws
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - 
-        - envchain hcdemo $SHELL
-
+        - open /Applications/Docker.app && export SHOW_EXTEND=true
