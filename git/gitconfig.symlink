@@ -78,6 +78,9 @@
   ; Probably should use this often
   ro  = !git fetch origin && git reset --hard origin/master
   pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
+  rmi = rm --cached
+	unstage = reset HEAD --
+	last = log -1 HEAD
 
 [merge]
   log = true
@@ -86,7 +89,7 @@
 [user]
   email = clint@ctshryock.com
 	name = Clint Shryock
-	signingkey = 8E88DAD35BE071BB
+	signingkey = B7C8F9C70EC5CD29
 
 [github]
   user = catsby
@@ -104,3 +107,11 @@
 	trustexitcode           = false
 [commit]
 	gpgsign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "https://github"]
+	insteadOf = git://github
+[url "ssh://git@heroku.com/"]
+	insteadOf = https://git.heroku.com/

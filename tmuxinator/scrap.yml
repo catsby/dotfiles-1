@@ -1,7 +1,7 @@
 # ~/.tmuxinator/scrap.yml
 
 name: scrap
-root: /Users/clint/Projects/Go/src/github.com/catsby/scrap
+root: /Users/clint/Go/src/github.com/catsby/scrap
 
 # Optional tmux socket
 # socket_name: foo

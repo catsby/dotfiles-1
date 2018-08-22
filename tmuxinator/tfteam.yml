@@ -1,7 +1,7 @@
 # ~/.tmuxinator/tfteam.yml
 
 name: tfteam
-root: /Users/clint/Projects/Go/src/github.com/catsby/tfteam
+root: /Users/clint/Go/src/github.com/catsby/tfteam
 
 # Optional tmux socket
 # socket_name: foo
@@ -38,4 +38,4 @@ windows:
       # synchronize: after
       panes:
         - nvim
-        - envchain tfteam $SHELL
+        - daysuntil && envchain tfteam $SHELL

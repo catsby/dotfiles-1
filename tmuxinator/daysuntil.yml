@@ -1,7 +1,7 @@
-# ~/.tmuxinator/tf.yml
+# ~/.tmuxinator/daysuntil.yml
 
-name: extend
-root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
+name: daysuntil
+root: /Users/clint/Go/src/github.com/catsby/daysuntil
 
 
 # Optional tmux socket
@@ -23,7 +23,7 @@ root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
 # startup_window: editor
 
 # Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+startup_pane: 2
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -32,26 +32,12 @@ root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
 # post: tmux -CC attach -t tf
 
 windows:
-  - website:
+  - hooks:
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      root: /Users/clint/Go/src/github.com/catsby/daysuntil
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - 
         -  daysuntil
-  - console: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - open /Applications/Docker.app
-  - site: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Go/src/github.com/catsby/tfsite
-      panes:
-        - envchain aws-tf $SHELL

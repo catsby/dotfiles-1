@@ -1,8 +1,6 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
-
-
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -18,10 +16,6 @@ Plug 'wincent/command-t', {
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-hclfmt'
-Plug 'git://github.com/airblade/vim-gitgutter.git'
-Plug 'git@github.com:bkad/vim-terraform.git'
-Plug 'git@github.com:fatih/vim-go.git'
-Plug 'git@github.com:fatih/vim-hclfmt.git'
 Plug 'godlygeek/tabular'
 Plug 'jayferd/ragel.vim'
 Plug 'kchmck/vim-coffee-script'
@@ -46,10 +40,24 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-ruby/vim-ruby'
+Plug 'rakr/vim-one'
+Plug 'edkolev/tmuxline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+
+let g:plug_url_format = 'git@github.com:%s.git'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'airblade/vim-gitgutter'
+Plug 'bkad/vim-terraform'
+unlet g:plug_url_format
 
 
 " Initialize plugin system
 call plug#end()
-color dracula
+" color dracula
+
+set termguicolors
 
 source ~/.vimrc

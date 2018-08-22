@@ -1,3 +1,6 @@
+# set shell
+set -g default-shell /bin/zsh
+
 # Setting the prefix from C-b to C-a
 set -g prefix C-a
 
@@ -14,6 +17,7 @@ set -g base-index 1
 setw -g pane-base-index 1
 
 # Binding to reload tmux conf
+unbind r
 bind r source-file ~/.tmux.conf \; display "reloaded!"
 
 # Send cntrl-a through with double hit
@@ -42,13 +46,13 @@ set -g mouse on
 set -g set-clipboard on
 
 # do some color things
-#set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
 #
 ## status line 
-#set -g status-style fg=white,bold,bg=black
-#set -g window-status-style fg=colour141,bg=black
-#set -g window-status-current-style fg=colour232,bold,bg=colour141
-#
+# set -g status-style fg=white,bold,bg=black
+# set -g window-status-style fg=colour141,bg=black
+# set -g window-status-current-style fg=colour232,bold,bg=colour141
+# 
 ## colors for pane borders
 #setw -g pane-border-style fg=colour141,bg=black
 ## setw -g pane-active-border-style fg=white,bg=white
@@ -58,24 +62,25 @@ setw -g window-style fg=colour240,bg=colour234
 setw -g window-active-style fg=white,bg=black
 #
 ## Command / message line
-set -g message-style fg=white,bold,bg=black
+# set -g message-style fg=white,bold,bg=black
 #
 ## Status line right side -  31-Oct 13:37
-set -g status-right "#[fg=cyan]%d %b %R"
+# set -g status-right "#[fg=cyan]%d %b %R"
 #
-## Update the status line every sixty seconds
-set -g status-interval 3600
+
 #
 ## Center the window list in the status line
 #set -g status-justify centre
 #
 ## enable activity alerts
-#setw -g monitor-activity on
-#set -g visual-activity on
+# setw -g monitor-activity on
+# set -g visual-activity on
 
-# enable theme
-source-file "${HOME}/.tmux-themepack/powerline/block/cyan.tmuxtheme"
-
+# acceptable themes
+# Block
+# source-file "${HOME}/.tmux-themepack/powerline/block/cyan.tmuxtheme"
+# source-file "${HOME}/.tmux-themepack/powerline/block/blue.tmuxtheme"
+# source-file "${HOME}/.tmux-themepack/powerline/block/orange.tmuxtheme"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
@@ -101,3 +106,14 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
 # bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Add truecolor support
+set-option -ga terminal-overrides ",xterm-256color:Tc"
+# Default terminal is 256 colors
+set -g default-terminal "screen-256color"
+
+# Source snapped tmux config
+source-file /Users/clint/Dropbox/Shared/dotfiles/tmux/tmux.snap
+## Update the status line every sixty seconds
+set -g status-interval 3600
+set -g status-justify centre

@@ -1,3 +1,3 @@
-alias T="startup-tmux.sh"
-alias Ta="tmux attach"
-alias Tr="tmux source-file ~/.tmux.conf"
+#alias T="startup-tmux.sh"
+#alias Ta="tmux attach"
+#alias Tr="tmux source-file ~/.tmux.conf"

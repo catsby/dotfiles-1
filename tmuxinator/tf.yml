@@ -1,7 +1,7 @@
 # ~/.tmuxinator/tf.yml
 
 name: tf
-root: /Users/clint/Projects/Go/src/github.com/terraform-providers
+root: /Users/clint/Go/src/github.com/terraform-providers
 
 
 # Optional tmux socket
@@ -23,7 +23,7 @@ root: /Users/clint/Projects/Go/src/github.com/terraform-providers
 # startup_window: editor
 
 # Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+startup_pane: 2
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -32,49 +32,12 @@ root: /Users/clint/Projects/Go/src/github.com/terraform-providers
 # post: tmux -CC attach -t tf
 
 windows:
-  - aws:
-      root: /Users/clint/Projects/Go/src/github.com/terraform-providers/terraform-provider-aws
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-
-          #  - gcp:
-          #      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-          #      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-          #      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-          #      # synchronize: after
-          #      root: /Users/clint/Projects/Go/src/github.com/terraform-providers/terraform-provider-google
-          #      panes:
-          #        - 
-          #        - envchain google $SHELL
   - core: 
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-  - website: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform-website
-      panes:
-        - 
-        - envchain aws-tf $SHELL
-  - tfdeploy: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/tf-deploy
+      root: /Users/clint/Go/src/github.com/hashicorp/terraform
       panes:
         - 
         - envchain aws-tf $SHELL
@@ -83,7 +46,13 @@ windows:
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
-      root: /Users/clint/Projects/Go/src/github.com/hashicorp/terraform-repositories
+      root: /Users/clint/Go/src/github.com/hashicorp/terraform-repositories
       panes:
         -
+  - tf-providers: 
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
         -

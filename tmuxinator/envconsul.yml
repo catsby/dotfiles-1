@@ -1,8 +1,7 @@
-# ~/.tmuxinator/tf.yml
+# ~/.tmuxinator/envconsul.yml
 
-name: extend
-root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
-
+name: envconsul
+root: /Users/clint/Go/src/github.com/hashicorp/envconsul
 
 # Optional tmux socket
 # socket_name: foo
@@ -32,26 +31,18 @@ root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
 # post: tmux -CC attach -t tf
 
 windows:
-  - website:
+  - nvim:
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - 
-        -  daysuntil
-  - console: 
+        - daysuntil
+  - consul-dev:
       layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - open /Applications/Docker.app
-  - site: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Go/src/github.com/catsby/tfsite
-      panes:
-        - envchain aws-tf $SHELL
+        - 

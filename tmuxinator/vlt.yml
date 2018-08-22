@@ -1,7 +1,7 @@
-# ~/.tmuxinator/tf.yml
+# ~/.tmuxinator/vlt.yml
 
-name: extend
-root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
+name: vlt
+root: /Users/clint/Go/src/github.com/hashicorp/vault
 
 
 # Optional tmux socket
@@ -23,35 +23,22 @@ root: /Users/clint/Go/src/github.com/hashicorp/terraform-website
 # startup_window: editor
 
 # Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+startup_pane: 2
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t tf
+# post: tmux -CC attach -t vlt
 
 windows:
-  - website:
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+  - core: 
+      #layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
+      root: /Users/clint/Go/src/github.com/hashicorp/vault
       panes:
         - 
-        -  daysuntil
-  - console: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      panes:
-        - open /Applications/Docker.app
-  - site: 
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
-      root: /Users/clint/Go/src/github.com/catsby/tfsite
-      panes:
-        - envchain aws-tf $SHELL
+        - daysuntil

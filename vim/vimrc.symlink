@@ -21,7 +21,7 @@ set background=dark
 
 set runtimepath+=/Users/clint/.local/share/nvim/plugged/dracula
 
-colorscheme dracula
+" colorscheme dracula
 " colorscheme molokai
 
 set synmaxcol=800           " don't try to highlight long lines
@@ -192,6 +192,7 @@ let g:CommandTMatchWindowReverse=0
 let g:turbux_command_test_unit = 'ruby -Ilib:test'
 " let g:turbux_command_cucumber = 'cucumber -f progress'
 
+" configure ack.vim to use the silver searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " In command-line mode, C-a jumps to beginning (to match C-e)
@@ -238,13 +239,13 @@ endfunction
 set splitright
 set splitbelow
 
-if has("statusline") && !&cp
-  colorscheme dracula
-  set statusline=%<%f\ 
-  set statusline+=%w%h%m%r 
-  set statusline+=\ [%{getcwd()}]
-  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
-endif
+" if has("statusline") && !&cp
+"   " colorscheme dracula
+"   set statusline=%<%f\ 
+"   set statusline+=%w%h%m%r 
+"   set statusline+=\ [%{getcwd()}]
+"   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+" endif
 
 " hi StatusLine term=inverse,bold cterm=NONE ctermbg=24 ctermfg=189
 " hi StatusLineNC term=inverse,bold cterm=NONE ctermbg=24 ctermfg=153
@@ -296,7 +297,7 @@ map <leader>gav :<C-u>call go#alternate#Switch(0, "vsplit")<CR>
 hi x255_Grey93 ctermfg=255 guifg=#eeeeee "rgb=238,238,238
 
 " Things from gvim
-set guifont=Menlo\ Regular:h14
+" set guifont=Menlo\ Regular:h14
 set linespace=2
 
 :set textwidth=80
@@ -321,3 +322,21 @@ let g:go_def_reuse_buffer = 1
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['golint']
+
+set termguicolors
+
+color dracula
+
+" Airline setup
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+" let g:tmuxline_preset = 'nightly_fox'	
+
+" ALE Linting w0rp/ale
+let g:ale_linters = {'go': ['go build', 'gometalinter']}
+let g:ale_go_gometalinter_options = '--concurrency=2 --aggregate --disable=megacheck'
+
+" vim-go things
+let g:go_auto_type_info = 1
+set updatetime=3000

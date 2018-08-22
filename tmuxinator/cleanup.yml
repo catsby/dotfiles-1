@@ -1,7 +1,7 @@
 # ~/.tmuxinator/cleanup.yml
 
 name: cleanup
-root: /Users/clint/Projects/Go/src/github.com/catsby/aws-scrap/cleanup
+root: /Users/clint/Go/src/github.com/catsby/aws-scrap/cleanup
 
 # Optional tmux socket
 # socket_name: foo

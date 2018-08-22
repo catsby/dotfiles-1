@@ -1,5 +1,9 @@
 ZSH_THEME="sorin"
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Dropbox/Shared/dotfiles
 
@@ -44,4 +48,5 @@ export NVM_DIR="/Users/clint/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 autoload -U +X bashcompinit && bashcompinit
-complete -C /Users/clint/Projects/Go/bin/terraform terraform
+complete -C /Users/clint/Go/bin/terraform terraform
+complete -o nospace -C /Users/clint/Go/bin/vault vault
