@@ -58,8 +58,8 @@ set -g set-clipboard on
 ## setw -g pane-active-border-style fg=white,bg=white
 #
 ## active pane normal, other shaded out
-setw -g window-style fg=colour240,bg=colour234
-setw -g window-active-style fg=white,bg=black
+# setw -g window-style fg=colour240,bg=colour234
+# setw -g window-active-style fg=white,bg=black
 #
 ## Command / message line
 # set -g message-style fg=white,bold,bg=black
@@ -117,3 +117,6 @@ source-file /Users/clint/Dropbox/Shared/dotfiles/tmux/tmux.snap
 ## Update the status line every sixty seconds
 set -g status-interval 3600
 set -g status-justify centre
+
+# auto-rename
+set-option -g allow-rename on

@@ -10,22 +10,15 @@ set nocompatible
 set encoding=utf-8
 set exrc                    " load vimrc from current directory
 
-" call pathogen#infect()
 filetype plugin indent on
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
 syntax enable
-set background=dark
-" colorscheme badwolf
 
-set runtimepath+=/Users/clint/.local/share/nvim/plugged/dracula
-
-" colorscheme dracula
-" colorscheme molokai
+" set runtimepath+=/Users/clint/.local/share/nvim/plugged/dracula
 
 set synmaxcol=800           " don't try to highlight long lines
-
 set ruler       " show the cursor position all the time
 set cursorline  " highlight the line of the cursor
 set showcmd     " show partial commands below the status line
@@ -33,8 +26,6 @@ set shell=/bin/bash  " avoids munging PATH under zsh
 let g:is_bash=1 " default shell syntax
 set history=200 " remember more Ex commands
 set scrolloff=3 " have some context around the current line always on screen
-
-"" -------
 
 " Visual Mode Orange Background, Black Text
 hi Visual          guifg=#000000 guibg=#FD971F
@@ -55,6 +46,12 @@ autocmd InsertLeave * highlight  Cursor guibg=#A6E22E;
 
 set nolazyredraw           " turn off lazy redraw
 set number                 " line numbers
+set showbreak=+ " display a + at the beginning of a wrapped line
+set listchars=tab:»·,trail:· " show tabs and trailing spaces
+set listchars+=extends:»     " show a » when a line goes off the right
+                             " edge of the screen
+set listchars+=precedes:«    " show a « when a line goes off the left
+                             " edge of the screen
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -75,16 +72,17 @@ set tabstop=2                     " a tab is two spaces
 set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set smartindent                   " be smart about it
 set expandtab                     " use spaces, not tabs
-set nolist                          " don't Show invisible characters
+" set nolist                          " don't Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
+
 " Joining lines
 if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j            " Delete comment char when joining commented lines
 endif
+
 set nojoinspaces                  " Use only 1 space after "." when joining lines, not 2
-" Indicator chars
-set listchars=tab:▸\ ,trail:•,extends:❯,precedes:❮
-"set showbreak=↪\ 
+
+set showbreak=↪\ 
 
 "" Searching
 set hlsearch                      " highlight matches
@@ -153,14 +151,15 @@ augroup END
 map Q gq
 
 " clear the search buffer when hitting return
-:nnoremap <CR> :nohlsearch<cr>
+" :nnoremap <CR> :nohlsearch<cr>
 
 " toggle the current fold
-:nnoremap <Space> za
-set foldmethod=indent   
-set foldnestmax=10
-set nofoldenable
-set foldlevel=2
+" removed b/c folding is annoying when you literally never use it
+":nnoremap <Space> za
+"set foldmethod=indent   
+"set foldnestmax=10
+"set nofoldenable
+"set foldlevel=2
 
 let mapleader=","
 " Show leader keystrokes in the bottom right
@@ -184,30 +183,9 @@ map <leader>F :CommandT %%<cr>
 
 map <leader>. :e .<cr>
 
-let g:CommandTMatchWindowAtTop=1
-let g:CommandTMaxHeight=10
-let g:CommandTMinHeight=2
-let g:CommandTMatchWindowReverse=0
-
-let g:turbux_command_test_unit = 'ruby -Ilib:test'
-" let g:turbux_command_cucumber = 'cucumber -f progress'
-
-" configure ack.vim to use the silver searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " In command-line mode, C-a jumps to beginning (to match C-e)
 cnoremap <C-a> <Home>
 
-" <Tab> indents if at the beginning of a line; otherwise does completion
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-n>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-p>
 
 " ignore Rubinius, Sass cache files
@@ -219,9 +197,11 @@ set wildignore+=node_modules/**
 " toggle between last open buffers
 nnoremap <leader><leader> <c-^>
 
-command! GdiffInTab tabedit %|vsplit|Gdiff
-nnoremap <leader>d :GdiffInTab<cr>
-nnoremap <leader>D :tabclose<cr>
+" command! GdiffInTab tabedit %|vsplit|Gdiff
+" nnoremap <leader>d :GdiffInTab<cr>
+" nnoremap <leader>D :tabclose<cr>
+
+nnoremap gdt :GoDefType<cr>
 
 command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
@@ -240,12 +220,17 @@ set splitright
 set splitbelow
 
 " if has("statusline") && !&cp
-"   " colorscheme dracula
-"   set statusline=%<%f\ 
-"   set statusline+=%w%h%m%r 
-"   set statusline+=\ [%{getcwd()}]
-"   set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
+"  set statusline=%<%f\ 
+"  set statusline+=%w%h%m%r 
+"  set statusline+=\ [%{getcwd()}]
+"  set statusline+=%{StatuslineGo()}
+"  set statusline+=hi
+"  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
 " endif
+" 
+" function! StatuslineGo()
+"   return exists('*go#statusline#Show') ? go#statusline#Show() : ''
+" endfunction
 
 " hi StatusLine term=inverse,bold cterm=NONE ctermbg=24 ctermfg=189
 " hi StatusLineNC term=inverse,bold cterm=NONE ctermbg=24 ctermfg=153
@@ -258,28 +243,31 @@ hi User5 term=inverse,bold cterm=NONE ctermbg=24 ctermfg=209
 
 " customizations
 set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
+set mat=3                  " duration to show matching brace (1/10 sec)
 set laststatus=2           " always show the status line
 
 
-autocmd BufWritePre *.rb,go :%s/\s\+$//e
-
-"spell check when writing commit logs
+" spell check when writing commit logs and markdown files
 autocmd filetype svn,*commit* setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+" word auto complete (?)
+set complete+=kspell
+set spelllang=en
+set spellfile=$HOME/Dropbox/nvim/spell/en.utf-8.add
+nmap <silent> <leader>s :set spell!<CR>
 
 " format md files to 80 chars
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " set up gofmt thing
 
-let g:go_fmt_command = "goimports"
 let g:neocomplete#enable_at_startup = 1
 
 " don't hit escape key
 :imap jk <Esc>
 " Press i to enter insert mode, and ii to exit.
 :imap ii <Esc>
-
 
 let g:go_autodetect_gopath = 0
 
@@ -289,10 +277,10 @@ map <leader>gas :<C-u>call go#alternate#Switch(0, "split")<CR>
 map <leader>gav :<C-u>call go#alternate#Switch(0, "vsplit")<CR>
 
 " disable cursor keys in normal mode
-" map <Left>  :echo "no!"<cr>
-" map <Right> :echo "no!"<cr>
-" map <Up>    :echo "no!"<cr>
-" map <Down>  :echo "no!"<cr>
+map <Left>  :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up>    :echo "no!"<cr>
+map <Down>  :echo "no!"<cr>
 
 hi x255_Grey93 ctermfg=255 guifg=#eeeeee "rgb=238,238,238
 
@@ -305,38 +293,238 @@ set linespace=2
 :hi ColorColumn guibg=#2d2d2d ctermbg=236
 :highlight clear SignColumn 
 
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>i <Plug>(go-info)
-
-
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 1
-" Set commandT file searcher
-let g:CommandTFileScanner = "watchman"
-" let g:CommandTFileScanner = "git"
-" let g:CommandTFileScanner = "find"
-let g:CommandTAlwaysShowDotFiles = 1
 let g:go_def_reuse_buffer = 1
 let g:go_fmt_command = "goimports"
+let g:go_metalinter_command='golangci-lint'
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['golint']
+let g:go_metalinter_autosave_enabled = [
+      \ 'stylecheck',
+      \ 'goconst',
+      \ 'gocyclo',
+      \ 'gosec',
+      \ 'deadcode',
+      \ 'vet',
+      \ 'errcheck',
+      \ 'interfacer',
+      \ 'maligned',
+      \ 'misspell',
+      \ 'prealloc'
+      \ ]
+let g:go_metalinter_enabled = [
+      \ 'stylecheck',
+      \ 'goconst',
+      \ 'gocyclo',
+      \ 'gosec',
+      \ 'deadcode',
+      \ 'vet',
+      \ 'errcheck',
+      \ 'interfacer',
+      \ 'maligned',
+      \ 'misspell',
+      \ 'prealloc'
+      \ ]
 
-set termguicolors
+""""""
+" Other linters
+      \ 'golint',
 
-color dracula
+""""""
+
+" 5 is the default
+let g:go_metalinter_deadline = "5s"
 
 " Airline setup
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 0
-" let g:tmuxline_preset = 'nightly_fox'	
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tmuxline#enabled = 0
 
-" ALE Linting w0rp/ale
-let g:ale_linters = {'go': ['go build', 'gometalinter']}
-let g:ale_go_gometalinter_options = '--concurrency=2 --aggregate --disable=megacheck'
+""""""""""""""""""""""""""
+" ALE Linting w0rp/ale """
+""""""""""""""""""""""""""
+" maybe not using, in favor of gopls
+" let g:ale_linters = {'go': ['go build', 'golangci-lint']}
+" let g:ale_go_golangci_lint_executable = 'golangci-lint'
+" let g:ale_go_golangci_lint_options = '--enable-all --fast'
+" let g:ale_go_golangci_lint_options = '--disable "typecheck"'
+""""""""""""""""""""""""""
+""""""""""""""""""""""""""
+
+autocmd BufWritePre *.rb,go :%s/\s\+$//e
+" use gopls/coc and format / organize on save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " vim-go things
+let g:go_info_mode='gopls'
+let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
+let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
-set updatetime=3000
+let g:go_updatetime = 1000
+
+set pyxversion=3
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
+" Remap keys for gotos
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" nmap <Leader>gd <Plug>(coc-definition)
+" nmap <Leader>gy <Plug>(coc-type-definition)
+" nmap <Leader>gi <Plug>(coc-implementation)
+" nmap <Leader>gr <Plug>(coc-references)
+
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+map <leader>i :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" enable ack+the silver searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" CommandT options
+" let g:CommandTFileScanner = "watchman"
+let g:CommandTFileScanner = "find"
+let g:CommandTAlwaysShowDotFiles = 1
+" let g:CommandTMaxHeight = 20
+let g:CommandTInputDebounce = 30
+let g:CommandTMinHeight = 2
+let g:CommandTMatchWindowAtTop=1
+let g:CommandTMatchWindowReverse=0
+
+
+" tab completion for coc.nvim: https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+" coc.nvim config comment / syntax
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+set termguicolors
+" color dracula
+" colorscheme base16-eighties
+" colorscheme base16-dracula
+" colorscheme base16-default-dark
+" colorscheme base16-classic-dark
+" colorscheme base16-solarflare
+" colorscheme base16-oceanicnext
+colorscheme base16-materia
+set background=dark
+
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? 'RO' : ''
+endfunction
+
+" Add diagnostic info for https://github.com/itchyny/getline.vim
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'readonly': 'LightlineReadonly'
+      \ },
+      \ }
+
+" -------------------------------------------------------------------------------------------------
+" coc.nvim default settings
+" -------------------------------------------------------------------------------------------------
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

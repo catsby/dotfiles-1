@@ -1,7 +1,30 @@
-# This is in ~/.zshrc as well, shouldn't need this here
-#if [[ -a ~/.rbenv ]]
-#then
-#	echo "hello world"
-#  export PATH="$HOME/.rbenv/bin:$PATH"
-#fi
-#eval "$(rbenv init -)"
+# for syntax highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+export ZSH_THEME="sorin"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/Dropbox/Shared/dotfiles
+
+export DOTFILES=$HOME/Dropbox/Shared/dotfiles
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+export GOPATH=$HOME/Go
+uPath=$GOPATH/bin:/Users/clint/scripts
+if [[ -a ~/.rbenv ]]
+then
+  uPath="$HOME/.rbenv/bin:$uPath"
+fi
+
+export PATH=$PATH:$uPath
+
+# add VMWare to path
+export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
+
+# add protocol buffers - use protoc in Vault or specific version
+# export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.7.0-rc-2-osx-x86_64/bin
+export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.1-osx-x86_64/bin
+# export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.0-osx-x86_64/bin

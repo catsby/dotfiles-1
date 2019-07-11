@@ -81,6 +81,7 @@
   rmi = rm --cached
 	unstage = reset HEAD --
 	last = log -1 HEAD
+  which-remote = "!f() { git rev-parse --abbrev-ref $branch@{upstream}; }; f"
 
 [merge]
   log = true
@@ -111,7 +112,12 @@
 	insteadOf = https://github.com/
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[url "https://github"]
+[userrl "https://github"]
 	insteadOf = git://github
 [url "ssh://git@heroku.com/"]
 	insteadOf = https://git.heroku.com/
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

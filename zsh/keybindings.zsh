@@ -15,5 +15,5 @@ bindkey '^I' complete-word	# complete on tab, leave expansion to _expand
 # bindkey '^[[5D' beginning-of-line
 # bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
-bindkey '^[^N' newtab
+# bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema",
+  "description": "Configuration file for coc.nvim",
+  "coc.preferences.snippetIndicator": "►",
+  "coc.preferences.diagnostic.enable": true,
+  "coc.preferences.diagnostic.hoverTarget": "float",
+  "languageserver": {
+    "golang": {
+      "command": "/Users/clint/Go/bin/gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}

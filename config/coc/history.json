@@ -1,0 +1,12 @@
+{
+  "lists": {
+    "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
+      "ex"
+    ]
+  },
+  "extensions": {
+    "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
+      ":CocUninstall coc-gocode:q`"
+    ]
+  }
+}

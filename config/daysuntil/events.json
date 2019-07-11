@@ -1,26 +1,128 @@
 [
     {
-        "ID": "W3RyZWxsb10gLSBxMjogZ28gZGV2IC0gbW9uZGF5MjAxOC0wOC0yNHQxNzowMDowMC4wMDB6",
-        "Name": "[Trello] - Q2: Go Dev - Monday",
-        "DateString": "2018-08-24T17:00:00.000Z",
-        "Date": "2018-08-24T17:00:00Z"
+        "ID": "W3RyZWxsb10gLSBxMjogYWMgbWlsYW4gZ2FtZTIwMTktMDctMTJ0MTc6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: AC Milan game",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
     },
     {
-        "ID": "W3RyZWxsb10gLSBxMjogcmVhZCBpbmR1c3RyaWFsIGdvIHByb2dyYW1taW5nMjAxOC0wOC0yNHQxNzowMDowMC4wMDB6",
-        "Name": "[Trello] - Q2: Read Industrial Go Programming",
-        "DateString": "2018-08-24T17:00:00.000Z",
-        "Date": "2018-08-24T17:00:00Z"
+        "ID": "W3RyZWxsb10gLSBxMjogY2xlYW4gLSBiYXRocm9vbXMyMDE5LTA3LTEydDE3OjAwOjAwLjAwMHo=",
+        "Name": "[Trello] - Q2: Clean - Bathrooms",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
     },
     {
-        "ID": "W3RyZWxsb10gLSBxMjogZ28gZGV2MjAxOC0wOC0yNHQxNzowMDowMC4wMDB6",
-        "Name": "[Trello] - Q2: Go Dev",
-        "DateString": "2018-08-24T17:00:00.000Z",
-        "Date": "2018-08-24T17:00:00Z"
+        "ID": "W3RyZWxsb10gLSBxMjogcmV2aWV3IGFuZCB0cnkgZGVtbzIwMTktMDctMTJ0MTc6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: Review and try demo",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
     },
     {
-        "ID": "W3RyZWxsb10gLSBxMjogY29ubmVjdCB3aXRoIGJyaWFuIGsuIGFib3V0IHVwY29taW5nIGt1YmVybmV0ZXMgd29yazIwMTgtMDgtMjJ0MTc6MDA6MDAuMDAweg==",
-        "Name": "[Trello] - Q2: Connect with Brian K. about upcoming Kubernetes work",
-        "DateString": "2018-08-22T17:00:00.000Z",
-        "Date": "2018-08-22T17:00:00Z"
+        "ID": "W3RyZWxsb10gLSBxMjogYWRkIHN0YXRpYyBhY2NvdW50IHRvIG9yYWNsZWRiMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q2: Add static account to OracleDB",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMzogY2FuY2VsIG1hZGlzb27igJlzIGdpem1vMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q3: Cancel Madison’s gizmo",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmV2aWV3IG5vbWFkIGRvYzIwMTktMDctMTJ0MjI6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: Review Nomad doc",
+        "DateString": "2019-07-12T22:00:00.000Z",
+        "Date": "2019-07-12T22:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmVhZCAiYmUgcmVzcG9uc2l2ZSIgaW4gc2VuaW9yIHNvZnR3YXJlIGVuZ2luZWVyMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q2: Read \"Be Responsive\" in Senior Software Engineer",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogY2xlYW4gLSB2YWN1dW0yMDE5LTA3LTEwdDE3OjAwOjAwLjAwMHo=",
+        "Name": "[Trello] - Q2: Clean - Vacuum",
+        "DateString": "2019-07-10T17:00:00.000Z",
+        "Date": "2019-07-10T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogbWV0YSAtIHJlc2VhcmNoOiBrdWJlIGNzaTIwMTktMDctMTJ0MTc6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: META - Research: Kube CSI",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjoga3ViZSBzdG9yYWdlIGNzaSBkb2MyMDE5LTA3LTEydDE3OjAwOjAwLjAwMHo=",
+        "Name": "[Trello] - Q2: Kube Storage CSI doc",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogY2hhbmdlIGdycGMgdG8gcmV0dXJuIGVycm9yIGFuZCBub3QgdS9wMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q2: change gRPC to return error and not u/p",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMTogYm9vayBoYXNoaWNvbmYgZmxpZ2h0MjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q1: Book HashiConf flight",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmVhZCBzZW5pb3IgZW5naW5lZXIgZm9yIHByb2plY3QyMDE5LTA3LTEydDE3OjAwOjAwLjAwMHo=",
+        "Name": "[Trello] - Q2: Read Senior Engineer for project",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmVhZCB1c2VyIHN0b3JlcyBmb3IgdmF1bHQgMS4yMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q2: Read user stores for Vault 1.2",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogdmF1bHQgYXV0aCBrdWJlIC0gd2lsZGNhcmQgMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q2: Vault Auth Kube - wildcard ",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmVhZCBjc2kgc3BlYzIwMTktMDctMTJ0MjI6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: Read CSI Spec",
+        "DateString": "2019-07-12T22:00:00.000Z",
+        "Date": "2019-07-12T22:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjoga3ViZS1jc2kgc3BlYzIwMTktMDctMTJ0MjI6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: Kube-CSI spec",
+        "DateString": "2019-07-12T22:00:00.000Z",
+        "Date": "2019-07-12T22:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMTogY29vcmRpbmF0ZSBrZXlib2FyZCByZXBhaXIgMjAxOS0wNy0xMnQxNzowMDowMC4wMDB6",
+        "Name": "[Trello] - Q1: Coordinate keyboard repair ",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMTogZmlsbCBvdXQgcGFwZXJzIGZvciBzb2NjZXIgYW5kIHNlbmQgYmFjazIwMTktMDctMTJ0MTc6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q1: Fill out papers for Soccer and send back",
+        "DateString": "2019-07-12T17:00:00.000Z",
+        "Date": "2019-07-12T17:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogcmV2aWV3IHNldGjigJlzIGRlbW8yMDE5LTA3LTA5dDIyOjAwOjAwLjAwMHo=",
+        "Name": "[Trello] - Q2: Review Seth’s demo",
+        "DateString": "2019-07-09T22:00:00.000Z",
+        "Date": "2019-07-09T22:00:00Z"
+    },
+    {
+        "ID": "W3RyZWxsb10gLSBxMjogZGFpbHkgcGxhbm5pbmcgLSB3ZWRuZXNkYXksIGp1bHkgMTB0aDIwMTktMDctMTB0MTU6MDA6MDAuMDAweg==",
+        "Name": "[Trello] - Q2: Daily planning - Wednesday, July 10th",
+        "DateString": "2019-07-10T15:00:00.000Z",
+        "Date": "2019-07-10T15:00:00Z"
     }
 ]
