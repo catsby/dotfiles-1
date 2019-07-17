@@ -6,7 +6,7 @@
   "coc.preferences.diagnostic.hoverTarget": "float",
   "languageserver": {
     "golang": {
-      "command": "/Users/clint/Go/bin/gopls",
+      "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }

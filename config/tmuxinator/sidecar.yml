@@ -1,6 +1,6 @@
-# ~/.tmuxinator/csi.yml
+# ~/.tmuxinator/sidecar.yml
 
-name: vault-csi
+name: vault-sidecar
 
 # Optional tmux socket
 # socket_name: foo
@@ -8,7 +8,7 @@ name: vault-csi
 # Runs before everything. Use it to start daemons etc.
 # pre: 
 # 
-root: /Users/clint/go-src/vault-csi
+root: /Users/clint/go-src/vault-sidecar
 
 # Project hooks
 # Runs on project start, always
@@ -45,7 +45,7 @@ pre_window: envchain vlt $SHELL
 
 
 windows:
-  - vault-csi: 
+  - sidecar: 
       layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
@@ -53,21 +53,21 @@ windows:
       panes:
         - 
         - daysuntil
-  - mini: 
+  - agent: 
       layout: main-horizontal
-      root: /Users/clint/go-src/vault-csi/mini-demo
+      root: /Users/clint/go-src/vault
       panes:
         - 
         - 
-  - driver: 
+  - vault: 
       layout: main-horizontal
-      root: /Users/clint/go-src/deislabs/secrets-store-csi-driver
+      root: /Users/clint/go-src/vault
       panes:
         - 
         - 
-  - terraform: 
+  - minikube: 
       layout: main-horizontal
-      root: /Users/clint/go-src/vault-csi/terraform
+      root: /Users/clint/go-src/vault-sidecar/minikube
       panes:
         - 
         - 

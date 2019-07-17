@@ -90,7 +90,7 @@
 [user]
   email = clint@ctshryock.com
 	name = Clint Shryock
-	signingkey = B7C8F9C70EC5CD29
+	signingkey = 18DCF9B4A84E9453
 
 [github]
   user = catsby

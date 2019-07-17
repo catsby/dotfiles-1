@@ -1,14 +1,13 @@
 # ~/.tmuxinator/csi.yml
 
-name: vault-csi
+name: back
+root: /Users/clint/Go/src/github.com/catsby/photos-backup
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
 # pre: 
-# 
-root: /Users/clint/go-src/vault-csi
 
 # Project hooks
 # Runs on project start, always
@@ -23,7 +22,7 @@ root: /Users/clint/go-src/vault-csi
 #on_project_stop: echo "on_project_stop"
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: envchain vlt $SHELL
+# pre_window: envchain vlt $SHELL
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -45,29 +44,11 @@ pre_window: envchain vlt $SHELL
 
 
 windows:
-  - vault-csi: 
+  - backups: 
       layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
-      panes:
-        - 
-        - daysuntil
-  - mini: 
-      layout: main-horizontal
-      root: /Users/clint/go-src/vault-csi/mini-demo
-      panes:
-        - 
-        - 
-  - driver: 
-      layout: main-horizontal
-      root: /Users/clint/go-src/deislabs/secrets-store-csi-driver
-      panes:
-        - 
-        - 
-  - terraform: 
-      layout: main-horizontal
-      root: /Users/clint/go-src/vault-csi/terraform
       panes:
         - 
         - 
