@@ -14,7 +14,6 @@ Plug 'wincent/command-t', {
   \ }
 	
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'fatih/vim-hclfmt'
 Plug 'godlygeek/tabular'
 Plug 'jayferd/ragel.vim'
@@ -37,16 +36,23 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'rakr/vim-one'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'aliou/bats.vim'
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 Plug 'chriskempson/base16-vim'
+
+" LanguageClient things?
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+" End LC things
+
 
 let g:plug_url_format = 'git@github.com:%s.git'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
