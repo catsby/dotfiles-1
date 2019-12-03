@@ -28,3 +28,11 @@ export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 # export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.7.0-rc-2-osx-x86_64/bin
 export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.1-osx-x86_64/bin
 # export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.0-osx-x86_64/bin
+
+export PKG_CONFIG_PATH="/Users/clint/go-src/vault-plugin-database-oracle:$PKG_CONFIG_PATH:/Users/clint/go-src/vault-plugin-database-oracle
+/"
+
+export LD_LIBRARY_PATH=/Users/clint/Downloads/instantclient_19_3
+export PKG_CONFIG_PATH=/Users/clint/Downloads/instantclient_19_3
+
+GOPRIVATE=github.com/hashicorp

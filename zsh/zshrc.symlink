@@ -35,12 +35,26 @@ complete -o nospace -C /Users/clint/Go/bin/vault vault
 
 qq() {
     clear
-    local gpath="${GOPATH:-$HOME/go}"
-    "${gpath%%:*}/src/github.com/y0ssar1an/q/q.sh" "$@"
+
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+
+    if [[ ! -f "$logpath" ]]; then
+        echo 'Q LOG' > "$logpath"
+    fi
+
+    tail -100f -- "$logpath"
 }
+
 qqrm() {
-    if [[ -f "$TMPDIR/q" ]]; then
-        rm "$TMPDIR/q"
+    logpath="$TMPDIR/q"
+    if [[ -z "$TMPDIR" ]]; then
+        logpath="/tmp/q"
+    fi
+    if [[ -f "$logpath" ]]; then
+        rm "$logpath"
     fi
     qq
 }
@@ -54,3 +68,17 @@ plugins=(kubectl)
 
 # goenv
 # eval "$(goenv init -)"
+
+# rbenv install ruby things
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+
+# make node 10 first
+export PATH="/usr/local/opt/node@10/bin:$PATH"

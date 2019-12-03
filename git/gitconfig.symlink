@@ -53,8 +53,8 @@
   ; - branch pointers
   ; Mostly the same as l with addition of author and date, 
   ; except custom formats don't show color
-  le  = log --pretty=format:"%Cgreen%h%Creset%x09%an%x09%ar%x09%s%x09%d" 
-  les  = log --pretty=format:"%Cgreen%H%Creset%x09%an%x09%ar%x09%s%x09%d" 
+  le  = log --pretty=format:"%Cgreen%h%Creset%x09%an%x09%ar%x09%s%x09%d"
+  les  = log --pretty=format:"%Cgreen%H%Creset%x09%an%x09%ar%x09%s%x09%d"
   ; Show a nice graph
   lg  = log --oneline --graph
   ; Show abbreviated status (so I can see the current branch)
@@ -80,7 +80,8 @@
   pr = "!f() { git fetch origin pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
   rmi = rm --cached
 	unstage = reset HEAD --
-	last = log -1 HEAD
+  ; Show the last commit, and add the short hash to the clipboard for easy paste
+	last = !git log -1 HEAD && git log --pretty=format:"%h" -1 | cut -c 1- | tr -d '\n' | pbcopy
   which-remote = "!f() { git rev-parse --abbrev-ref $branch@{upstream}; }; f"
 
 [merge]
@@ -88,9 +89,9 @@
 
 
 [user]
-  email = clint@ctshryock.com
-	name = Clint Shryock
-	signingkey = 18DCF9B4A84E9453
+	email = clint@ctshryock.com
+	name = catsby
+	signingkey = 0EC5CD29
 
 [github]
   user = catsby

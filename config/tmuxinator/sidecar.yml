@@ -59,15 +59,15 @@ windows:
       panes:
         - 
         - 
-  - vault: 
+  - consul-template: 
       layout: main-horizontal
-      root: /Users/clint/go-src/vault
+      root: /Users/clint/Go/src/github.com/hashicorp/consul-template
       panes:
         - 
         - 
-  - minikube: 
+  - nomad: 
       layout: main-horizontal
-      root: /Users/clint/go-src/vault-sidecar/minikube
+      root: /Users/clint/Go/src/github.com/hashicorp/nomad
       panes:
         - 
         - 

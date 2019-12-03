@@ -193,6 +193,7 @@ set wildignore+=tmp/**,*.rbc,.rbx,*.scssc,*.sassc
 " ignore Bundler standalone/vendor installs & gems
 set wildignore+=bundle/**,vendor/bundle/**,vendor/cache/**,vendor/gems/**
 set wildignore+=node_modules/**
+set wildignore+=.DS_Store
 
 " toggle between last open buffers
 nnoremap <leader><leader> <c-^>
@@ -293,47 +294,107 @@ set linespace=2
 :hi ColorColumn guibg=#2d2d2d ctermbg=236
 :highlight clear SignColumn 
 
+"      \ 'stylecheck',
+"      \ 'goconst',
+"      \ 'gosec',
+"      \ 'deadcode',
+"      \ 'gosimple',
+"      \ 'staticcheck',
+"      \ 'vet',
+"      \ 'errcheck',
+"      \ 'interfacer',
+"      \ 'maligned',
+"      \ 'gocyclo',
+"      \ 'misspell'
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
 let g:go_def_reuse_buffer = 1
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_command='golangci-lint'
 let g:go_metalinter_autosave = 1
+let g:go_list_type = "quickfix"
+let g:go_list_autoclose = 1
+let g:go_term_mode = "vsplit"
+
 let g:go_metalinter_autosave_enabled = [
-      \ 'stylecheck',
-      \ 'goconst',
-      \ 'gocyclo',
-      \ 'gosec',
       \ 'deadcode',
-      \ 'vet',
       \ 'errcheck',
+      \ 'gosimple',
+      \ 'govet',
+      \ 'ineffassign',
+      \ 'staticcheck',
+      \ 'structcheck',
+      \ 'typecheck',
+      \ 'unused',
+      \ 'varcheck',
+      \ 'bodyclose',
+      \ 'depguard',
+      \ 'dupl',
+      \ 'funlen',
+      \ 'gochecknoglobals',
+      \ 'gochecknoinits',
+      \ 'goconst',
+      \ 'gocritic',
+      \ 'gocyclo',
+      \ 'gofmt',
+      \ 'goimports',
+      \ 'golint',
+      \ 'gosec',
       \ 'interfacer',
       \ 'maligned',
       \ 'misspell',
-      \ 'prealloc'
+      \ 'nakedret',
+      \ 'prealloc',
+      \ 'scopelint',
+      \ 'stylecheck',
+      \ 'unconvert',
+      \ 'unparam'
       \ ]
 let g:go_metalinter_enabled = [
-      \ 'stylecheck',
-      \ 'goconst',
-      \ 'gocyclo',
-      \ 'gosec',
       \ 'deadcode',
-      \ 'vet',
       \ 'errcheck',
+      \ 'gosimple',
+      \ 'govet',
+      \ 'ineffassign',
+      \ 'staticcheck',
+      \ 'structcheck',
+      \ 'typecheck',
+      \ 'unused',
+      \ 'varcheck',
+      \ 'bodyclose',
+      \ 'depguard',
+      \ 'dupl',
+      \ 'funlen',
+      \ 'gochecknoglobals',
+      \ 'gochecknoinits',
+      \ 'goconst',
+      \ 'gocritic',
+      \ 'gocyclo',
+      \ 'gofmt',
+      \ 'goimports',
+      \ 'golint',
+      \ 'gosec',
       \ 'interfacer',
       \ 'maligned',
       \ 'misspell',
-      \ 'prealloc'
+      \ 'nakedret',
+      \ 'prealloc',
+      \ 'scopelint',
+      \ 'stylecheck',
+      \ 'unconvert',
+      \ 'unparam'
       \ ]
 
 """"""
 " Other linters
-      \ 'golint',
-
+"      \ 'golint',
+"            \ 'gocyclo',
 """"""
 
+let g:go_jump_to_error = 0
+
 " 5 is the default
-let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_deadline = "10s"
 
 " Airline setup
 " let g:airline_powerline_fonts = 1
@@ -341,7 +402,7 @@ let g:go_metalinter_deadline = "5s"
 " let g:airline#extensions#tmuxline#enabled = 0
 
 """"""""""""""""""""""""""
-" ALE Linting w0rp/ale """
+" ALE using w0rp/ale """
 """"""""""""""""""""""""""
 " maybe not using, in favor of gopls
 " let g:ale_linters = {'go': ['go build', 'golangci-lint']}
@@ -358,7 +419,6 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 " vim-go things
 let g:go_info_mode='gopls'
 let g:go_def_mode='gopls'
-" let g:go_info_mode='gopls'
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 let g:go_updatetime = 1000
@@ -443,6 +503,13 @@ function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
 
+" Show full path of filename
+function! FilenameForLightline()
+    " returns something like database/backend.go
+    " return expand("%:h:t") . '/' .expand('%:t')
+    return expand('%:f')
+endfunction
+
 " Add diagnostic info for https://github.com/itchyny/getline.vim
 let g:lightline = {
       \ 'colorscheme': 'one',
@@ -453,7 +520,8 @@ let g:lightline = {
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
       \   'currentfunction': 'CocCurrentFunction',
-      \   'readonly': 'LightlineReadonly'
+      \   'readonly': 'LightlineReadonly',
+      \   'filename': 'FilenameForLightline'
       \ },
       \ }
 
@@ -527,4 +595,8 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+let g:coc_enable_locationlist = 0
+autocmd User CocLocationsChange CocList --normal -A location

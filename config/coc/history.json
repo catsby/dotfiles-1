@@ -1,12 +1,40 @@
 {
   "lists": {
     "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
-      "ex"
+      "ex",
+      "win"
     ]
   },
   "extensions": {
     "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
       ":CocUninstall coc-gocode:q`"
+    ],
+    "%2FUsers%2Fclint%2Fgo-src%2Fvault-plugin-database-oracle": [
+      "ejk",
+      "qq:"
+    ],
+    "%2FUsers%2Fclint%2Fgo-src%2Fraft-snapshot": [
+      "ee"
+    ]
+  },
+  "location": {
+    "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
+      "exit"
+    ]
+  },
+  "diagnostics": {
+    "%2FUsers%2Fclint%2Fgo-src%2Fhashiconf2019talk": [
+      "nd"
+    ],
+    "%2FUsers%2Fclint%2FDropbox%2Fhashiconf2019talk": [
+      "kjkj"
+    ],
+    "%2FUsers%2Fclint%2Fgo-src%2Fvault": [
+      "chan",
+      " f"
+    ],
+    "%2FUsers%2Fclint%2Fgo-src%2Fscrap%2Funset": [
+      " el"
     ]
   }
 }
