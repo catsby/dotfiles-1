@@ -4,7 +4,7 @@ alias svnrebase='git svn rebase'
 
 #shorter aliases
 alias g='git'
-alias gh='hub'
+#alias gh='hub'
 alias gb='git branch'
 alias gmv='git mv'
 alias gr='git rebase'

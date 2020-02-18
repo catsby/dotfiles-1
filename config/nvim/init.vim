@@ -42,7 +42,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 Plug 'chriskempson/base16-vim'
 
-" LanguageClient things?
+" LanguageClient things
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -58,6 +58,7 @@ let g:plug_url_format = 'git@github.com:%s.git'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
 Plug 'bkad/vim-terraform'
+Plug 'jxnblk/vim-mdx-js'
 unlet g:plug_url_format
 
 " Initialize plugin system

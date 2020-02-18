@@ -2,7 +2,7 @@
 # ~/.tmuxinator/ex.yml
 
 name: ex
-root: /Users/clint/Go/src/github.com/catsby/exercism/go
+root: /Users/clint/go-src/github.com/catsby/exercism/go
 
 
 # Optional tmux socket

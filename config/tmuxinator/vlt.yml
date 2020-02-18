@@ -1,7 +1,7 @@
 # ~/.tmuxinator/vlt.yml
 
 name: vlt-oss
-root: /Users/clint/go-src/vault
+root: /Users/clint/go-src/github.com/hashicorp/vault
 
 # Optional tmux socket
 # socket_name: foo

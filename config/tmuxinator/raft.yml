@@ -1,7 +1,7 @@
 # ~/.tmuxinator/raft.yml
 
 name: raft
-root: /Users/clint/go-src/hashicorp/raft
+root: /Users/clint/go-src/github.com/hashicorp/raft
 
 # Optional tmux socket
 # socket_name: foo
@@ -51,13 +51,13 @@ windows:
         - daysuntil
   - demo: 
       layout: main-horizontal
-      root: /Users/clint/go-src/hashicorp/raft-snapshot
+      root: /Users/clint/go-src/github.com/hashicorp/raft-snapshot
       panes:
         - 
         - 
   - localcluster: 
       layout: main-horizontal
-      root: /Users/clint/go-src/hashicorp/raft-snapshot/localcluster
+      root: /Users/clint/go-src/github.com/hashicorp/raft-snapshot/localcluster
       panes:
         - 
         - 
