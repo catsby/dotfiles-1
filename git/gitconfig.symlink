@@ -6,7 +6,7 @@
 
 [core]
 	excludesfile = /Users/clint/.gitignore
-    whitespace   = fix,space-before-tab,tab-in-indent,trailing-space
+  whitespace   = fix,space-before-tab,tab-in-indent,trailing-space
 	autocrlf = input
 	editor = nvim
 
@@ -73,6 +73,7 @@
   v   = show
   c   = checkout
   cc  = commit
+  praise = blame
   ; Rebase some commits, just take the last 10
   ri  = rebase -i HEAD~10
   ; Probably should use this often
@@ -83,6 +84,12 @@
   ; Show the last commit, and add the short hash to the clipboard for easy paste
 	last = !git log -1 HEAD && git log --pretty=format:"%h" -1 | cut -c 1- | tr -d '\n' | pbcopy
   which-remote = "!f() { git rev-parse --abbrev-ref $branch@{upstream}; }; f"
+  findpr = "!f() {  \
+    curl -s -H \"Accept: application/vnd.github.groot-preview+json\" -H \"Authorization: token ${GITHUB_API_TOKEN}\" \
+      https://api.github.com/repos/hashicorp/vault/commits/${1}/pulls | \
+    jq -r '.[] | .html_url'; \
+    }; \
+    f"
 
 [merge]
   log = true
@@ -91,7 +98,7 @@
 [user]
 	email = clint@ctshryock.com
 	name = catsby
-	signingkey = 0EC5CD29
+	signingkey = B7C8F9C70EC5CD29
 
 [github]
   user = catsby
