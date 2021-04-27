@@ -81,6 +81,10 @@ set -g set-clipboard on
 # source-file "${HOME}/.tmux-themepack/powerline/block/cyan.tmuxtheme"
 # source-file "${HOME}/.tmux-themepack/powerline/block/blue.tmuxtheme"
 # source-file "${HOME}/.tmux-themepack/powerline/block/orange.tmuxtheme"
+ 
+ 
+ 
+source-file "${HOME}/.tmux-themepack/powerline/block/cyan.tmuxtheme"
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
@@ -91,7 +95,7 @@ bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
 bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
 bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
 bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
-bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+# bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 # bind-key h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
 # bind-key j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
@@ -102,7 +106,7 @@ bind-key -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 # restore the clear screen command after remapping the vim moves above
 bind C-l send-keys 'C-l'
 
-set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh" 
+# set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh" 
 bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
 # bind -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
@@ -113,10 +117,12 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "screen-256color"
 
 # Source snapped tmux config
-source-file /Users/clint/Dropbox/Shared/dotfiles/tmux/tmux.snap
+# source-file /Users/clint/Dropbox/Shared/dotfiles/tmux/tmux.snap
 ## Update the status line every sixty seconds
 set -g status-interval 3600
 set -g status-justify centre
 
 # auto-rename
 set-option -g allow-rename on
+
+set-option -g default-command "reattach-to-user-namespace -l zsh"

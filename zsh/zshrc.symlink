@@ -25,7 +25,7 @@ unsetopt correct
 unsetopt correct_all
 
 autoload -U +X bashcompinit && bashcompinit
-complete -C /Users/clint/Go/bin/terraform terraform
+complete -C /usr/local/bin/terraform terraform
 complete -o nospace -C /Users/clint/Go/bin/vault vault
 
 ######################
@@ -66,9 +66,6 @@ ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 # kube?
 plugins=(kubectl)
 
-# goenv
-# eval "$(goenv init -)"
-
 # rbenv install ruby things
 
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -82,3 +79,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
 
 # make node 10 first
 export PATH="/usr/local/opt/node@10/bin:$PATH"
+
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+# export PATH="/usr/local/opt/go@1.13/bin:$PATH"
+
+complete -o nospace -C /Users/clint/Go/bin/waypoint waypoint
+
+complete -o nospace -C /usr/local/bin/terraform terraform

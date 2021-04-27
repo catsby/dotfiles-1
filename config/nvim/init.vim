@@ -10,7 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 
 Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && rb local 2.6.3; ruby extconf.rb && make'
+  \   'do': 'cd ruby/command-t/ext/command-t && rb local 2.6.5; ruby extconf.rb && make'
   \ }
 	
 Plug 'christoomey/vim-tmux-navigator'
@@ -20,7 +20,7 @@ Plug 'jayferd/ragel.vim'
 Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'pangloss/vim-javascript'
-Plug 'sebdah/vim-delve'
+"Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -41,12 +41,16 @@ Plug 'aliou/bats.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 Plug 'chriskempson/base16-vim'
+Plug 'hashivim/vim-terraform'
+
+Plug 'majutsushi/tagbar'
+
 
 " LanguageClient things
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
 
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
@@ -57,7 +61,6 @@ Plug 'junegunn/fzf'
 let g:plug_url_format = 'git@github.com:%s.git'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
-Plug 'bkad/vim-terraform'
 Plug 'jxnblk/vim-mdx-js'
 unlet g:plug_url_format
 

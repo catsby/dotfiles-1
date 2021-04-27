@@ -1,14 +1,37 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema",
-  "description": "Configuration file for coc.nvim",
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.disableKind": true,
+	"coc.preferences.formatOnSaveFiletypes": ["go"],
   "coc.preferences.snippetIndicator": "►",
-  "coc.preferences.diagnostic.enable": true,
+  "suggest.snippetIndicator": "►",
   "coc.preferences.diagnostic.hoverTarget": "float",
+	"coc.preferences.jumpCommand": "edit",
+  "suggest.noselect": false,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
   "languageserver": {
     "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".git/"],
-      "filetypes": ["go"]
+      "command": "/Users/clint/Go/bin/gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"],
+      "args": ["-remote=auto"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
     }
+  },
+  "go.goplsOptions": {
+    "staticcheck": true
   }
 }

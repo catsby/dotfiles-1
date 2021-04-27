@@ -39,3 +39,9 @@ Thumbs.db.
 .DS_Store
 localrc.symlink
 config/gcloud
+config/karabiner/automatic_backups
+config/hub
+config/coc
+config/yarn
+config/coc/extensions/node_modules
+config/coc/history.json

@@ -29,6 +29,11 @@ export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.1-osx-x86_64/bin
 # export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.0-osx-x86_64/bin
 
+# from guide on grpc
+# -- replaced by "brew install protobuf"
+# export PATH=$PATH:/Users/clint/.local/protoc-3.12.0-osx-x86_64/bin
+
+
 export PKG_CONFIG_PATH="/Users/clint/go-src/vault-plugin-database-oracle:$PKG_CONFIG_PATH:/Users/clint/go-src/vault-plugin-database-oracle
 /"
 

@@ -31,7 +31,7 @@ pre_window: envchain vlt $SHELL
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+startup_window: watch
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -44,16 +44,22 @@ pre_window: envchain vlt $SHELL
 
 
 windows:
-  - core: 
+  - watch: 
       layout: main-horizontal
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
+      # layout: 1be4,255x56,0,0[255x37,0,0{127x37,0,0,1,127x37,128,0,3},255x18,0,38,4]]
+      # layout: 1be4,255x56,0,0[255x37,0,0{127x37,0,0,1,127x37,128,0,3},255x18,0,38,4]
       panes:
         - 
         - daysuntil
-  - run: 
+  - gcp-auth:
+      root: /Users/clint/go-src/github.com/hashicorp/vault-plugin-auth-gcp
       layout: main-horizontal
       panes:
-        - 
-        - 
+        -
+        -
+  - gcp-common:
+      root: /Users/clint/go-src/github.com/hashicorp/go-gcp-common
+      layout: main-horizontal
+      panes:
+        -
+        -

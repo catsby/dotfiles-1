@@ -2,22 +2,28 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-theme_option="@themepack"
-default_theme='block/blue'
+get-tmux-option() {
+  local option value default
+  option="$1"
+  default="$2"
+  value="$(tmux show-option -gqv "$option")"
 
-get_tmux_option() {
-	local option="$1"
-	local default_value="$2"
-	local option_value="$(tmux show-option -gqv "$option")"
-	if [ -z "$option_value" ]; then
-		echo "$default_value"
-	else
-		echo "$option_value"
-	fi
+  if [ -n "$value" ]; then
+    echo "$value"
+  else
+    echo "$default"
+  fi
 }
 
 main() {
-	local theme="$(get_tmux_option "$theme_option" "$default_theme")"
-	tmux source-file "$CURRENT_DIR/powerline/${theme}.tmuxtheme"
+  local theme
+  theme="$(get-tmux-option "@themepack" "basic")"
+
+  if [ -f "$CURRENT_DIR/${theme}.tmuxtheme" ]; then
+    tmux source-file "$CURRENT_DIR/${theme}.tmuxtheme"
+  else
+    tmux source-file "$CURRENT_DIR/powerline/${theme}.tmuxtheme"
+  fi
 }
-main
+
+main "$@"

@@ -1,0 +1,60 @@
+# ~/.tmuxinator/vlc.yml
+
+name: Vault TFC Engine
+root: /Users/clint/go-src/github.com/hashicorp/vault-plugin-secrets-terraform
+
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: 
+
+# Project hooks
+# Runs on project start, always
+#on_project_start: echo "on_project_start"
+# Run on project start, the first time
+#on_project_first_start: echo "on_project_first_start"
+# Run on project start, after the first time
+#on_project_restart: echo "on_project_restart"
+# Run on project exit ( detaching from tmux session )
+#on_project_exit: echo "on_project_exit"
+# Run on project stop
+#on_project_stop: echo "on_project_stop"
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+pre_window: envchain TFC $SHELL
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+# post: tmux -CC attach -t stuff
+
+
+windows:
+  - engine: 
+      layout: main-horizontal
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      panes:
+        - 
+        - daysuntil
+  - run: 
+      layout: main-horizontal
+      panes:
+        -
+        -

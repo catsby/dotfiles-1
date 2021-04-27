@@ -6,6 +6,10 @@
 ""   Janus  <github.com/carlhuda/janus>
 ""
 
+if !has('nvim')
+    set viminfo+=~/.vim/viminfo
+endif
+
 set nocompatible
 set encoding=utf-8
 set exrc                    " load vimrc from current directory
@@ -37,6 +41,7 @@ highlight CursorLine guibg=#3E3D32
 " Change Color when entering Insert Mode
 autocmd InsertEnter * highlight  CursorLine guibg=#323D3E
 autocmd InsertEnter * highlight  Cursor guibg=#00AAFF;
+
 
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * highlight  CursorLine guibg=#3E3D32
@@ -151,7 +156,7 @@ augroup END
 map Q gq
 
 " clear the search buffer when hitting return
-" :nnoremap <CR> :nohlsearch<cr>
+:nnoremap <CR> :nohlsearch<cr>
 
 " toggle the current fold
 " removed b/c folding is annoying when you literally never use it
@@ -176,10 +181,19 @@ nmap <leader>P PV`]=
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
+" CommandT options
 map <leader>gl :CommandT lib<cr>
-map <leader>gt :CommandTTag<cr>
+"map <leader>gt :CommandTTag<cr>
 map <leader>f :CommandT<cr>
 map <leader>F :CommandT %%<cr>
+
+let g:CommandTMaxFiles=200000
+let g:CommandTFileScanner = "find"
+let g:CommandTAlwaysShowDotFiles = 1
+let g:CommandTInputDebounce = 30
+let g:CommandTMinHeight = 2
+let g:CommandTMatchWindowAtTop=0
+let g:CommandTMatchWindowReverse=0
 
 map <leader>. :e .<cr>
 
@@ -218,19 +232,6 @@ endfunction
 set splitright
 set splitbelow
 
-" if has("statusline") && !&cp
-"  set statusline=%<%f\ 
-"  set statusline+=%w%h%m%r 
-"  set statusline+=\ [%{getcwd()}]
-"  set statusline+=%{StatuslineGo()}
-"  set statusline+=hi
-"  set statusline+=%=%-14.(Line:\ %l\ of\ %L\ [%p%%]\ -\ Col:\ %c%V%)
-" endif
-" 
-" function! StatuslineGo()
-"   return exists('*go#statusline#Show') ? go#statusline#Show() : ''
-" endfunction
-
 " hi StatusLine term=inverse,bold cterm=NONE ctermbg=24 ctermfg=189
 " hi StatusLineNC term=inverse,bold cterm=NONE ctermbg=24 ctermfg=153
 hi User1 term=inverse,bold cterm=NONE ctermbg=29 ctermfg=159
@@ -245,6 +246,9 @@ set showmatch              " brackets/braces that is
 set mat=3                  " duration to show matching brace (1/10 sec)
 set laststatus=2           " always show the status line
 
+if has("autocmd")
+  filetype indent on
+endif
 
 " spell check when writing commit logs and markdown files
 autocmd filetype svn,*commit* setlocal spell
@@ -259,16 +263,44 @@ nmap <silent> <leader>s :set spell!<CR>
 " format md files to 80 chars
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
-" set up gofmt thing
-
-let g:neocomplete#enable_at_startup = 1
-
 " don't hit escape key
 :imap jk <Esc>
 " Press i to enter insert mode, and ii to exit.
 :imap ii <Esc>
 
-let g:go_autodetect_gopath = 0
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" from https://pmihaylov.com/vim-for-go-development/
+" ctscts
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" probably not needed as it's deprecated and disabled by default
+
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" use gofumpt https://github.com/mvdan/gofumpt
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+" end from https://pmihaylov.com/vim-for-go-development
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vim-go alternate things
 map <leader>gae :<C-u>call go#alternate#Switch(0, "edit")<CR>
@@ -292,161 +324,85 @@ set linespace=2
 :hi ColorColumn guibg=#2d2d2d ctermbg=236
 :highlight clear SignColumn 
 
-"      \ 'stylecheck',
-"      \ 'goconst',
-"      \ 'gosec',
-"      \ 'deadcode',
-"      \ 'gosimple',
-"      \ 'staticcheck',
-"      \ 'vet',
-"      \ 'errcheck',
-"      \ 'interfacer',
-"      \ 'maligned',
-"      \ 'gocyclo',
-"      \ 'misspell'
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
-let g:go_def_reuse_buffer = 1
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_command='golangci-lint'
-let g:go_metalinter_autosave = 1
-let g:go_list_type = "quickfix"
+
+" copied from Evan:
+let g:go_term_enabled = 1
+let g:go_term_mode = "split"
+let g:go_term_height = 10
+
 let g:go_list_autoclose = 1
-let g:go_term_mode = "vsplit"
-
-let g:go_metalinter_autosave_enabled = [
-      \ 'deadcode',
-      \ 'errcheck',
-      \ 'gosimple',
-      \ 'govet',
-      \ 'ineffassign',
-      \ 'staticcheck',
-      \ 'structcheck',
-      \ 'typecheck',
-      \ 'unused',
-      \ 'varcheck',
-      \ 'bodyclose',
-      \ 'depguard',
-      \ 'dupl',
-      \ 'funlen',
-      \ 'gochecknoglobals',
-      \ 'gochecknoinits',
-      \ 'goconst',
-      \ 'gocritic',
-      \ 'gocyclo',
-      \ 'gofmt',
-      \ 'goimports',
-      \ 'golint',
-      \ 'gosec',
-      \ 'interfacer',
-      \ 'maligned',
-      \ 'misspell',
-      \ 'nakedret',
-      \ 'prealloc',
-      \ 'scopelint',
-      \ 'stylecheck',
-      \ 'unconvert',
-      \ 'unparam'
-      \ ]
-let g:go_metalinter_enabled = [
-      \ 'deadcode',
-      \ 'errcheck',
-      \ 'gosimple',
-      \ 'govet',
-      \ 'ineffassign',
-      \ 'staticcheck',
-      \ 'structcheck',
-      \ 'typecheck',
-      \ 'unused',
-      \ 'varcheck',
-      \ 'bodyclose',
-      \ 'depguard',
-      \ 'dupl',
-      \ 'funlen',
-      \ 'gochecknoglobals',
-      \ 'gochecknoinits',
-      \ 'goconst',
-      \ 'gocritic',
-      \ 'gocyclo',
-      \ 'gofmt',
-      \ 'goimports',
-      \ 'golint',
-      \ 'gosec',
-      \ 'interfacer',
-      \ 'maligned',
-      \ 'misspell',
-      \ 'nakedret',
-      \ 'prealloc',
-      \ 'scopelint',
-      \ 'stylecheck',
-      \ 'unconvert',
-      \ 'unparam'
-      \ ]
 
 """"""
-" Other linters
-"      \ 'golint',
-"            \ 'gocyclo',
+" Metalint stuff
 """"""
-
-let g:go_jump_to_error = 0
 
 " 5 is the default
-let g:go_metalinter_deadline = "10s"
+" let g:go_metalinter_deadline = "10s"
+" let g:go_metalinter_command='golangci-lint'
+let g:go_metalinter_command='gopls'
+" let g:go_metalinter_autosave = 1
+" let g:go_list_type = "locationlist"
+
+"let g:go_metalinter_autosave_enabled = [
+"      \ 'golint',
+"      \ 'bodyclose',
+"      \ 'deadcode',
+"      \ 'errcheck',
+"      \ 'staticcheck',
+"      \ 'structcheck',
+"      \ 'stylecheck'
+"      \ ]
+
+"let g:go_metalinter_enabled = [
+"      \ 'vet',
+"      \ 'bodyclose',
+"      \ 'deadcode',
+"      \ 'errcheck',
+"      \ 'funlen',
+"      \ 'gocyclo',
+"      \ 'gosec',
+"      \ 'ineffassign',
+"      \ 'interfacer',
+"      \ 'maligned',
+"      \ 'prealloc',
+"      \ 'scopelint',
+"      \ 'staticcheck',
+"      \ 'structcheck',
+"      \ 'stylecheck',
+"      \ 'typecheck',
+"      \ 'unconvert',
+"      \ 'unparam',
+"      \ 'unused',
+"      \ 'varcheck'
+"      \ ]
+
+" disable gopls from vim-go(?)
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_doc_keywordprg_enabled = 0
+
+let g:go_code_completion_enabled = 0
+let g:go_gopls_enabled = 1
+" using guru here, disabling gopls. Def / info uses coc below, see 'coc-definition', 'coc-type-definition' below
+let g:go_info_mode = "guru"
+" let g:go_def_mode = "guru"
+
+" From Aaron - may have tripped me up before: https://hashicorp.slack.com/archives/C0CC1503Z/p1589482345151600
+let g:go_def_mapping_enabled = 0
 
 autocmd BufWritePre *.rb,go :%s/\s\+$//e
 " use gopls/coc and format / organize on save
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
-" vim-go things
-let g:go_info_mode='gopls'
-let g:go_def_mode='gopls'
-let g:go_auto_sameids = 0
-let g:go_auto_type_info = 1
-let g:go_updatetime = 1000
-
-" new
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-let g:go_doc_keywordprg_enabled = 0
-let g:go_textobj_enabled = 0
-" let g:go_gopls_enabled = 0
-"
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap gdt :GoDefType<cr>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-map <leader>i :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" nnoremap let :GoDefType<cr>
 
 " enable ack+the silver searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" CommandT options
-" let g:CommandTFileScanner = "watchman"
-let g:CommandTFileScanner = "find"
-let g:CommandTAlwaysShowDotFiles = 1
-" let g:CommandTMaxHeight = 20
-let g:CommandTInputDebounce = 30
-let g:CommandTMinHeight = 2
-let g:CommandTMatchWindowAtTop=1
-let g:CommandTMatchWindowReverse=0
 
 
 " tab completion for coc.nvim: https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources
@@ -456,10 +412,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
 
 " coc.nvim config comment / syntax
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -482,7 +438,6 @@ function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
 
-
 function! LightlineReadonly()
   return &readonly && &filetype !=# 'help' ? 'RO' : ''
 endfunction
@@ -490,21 +445,20 @@ endfunction
 " Show full path of filename
 function! FilenameForLightline()
     " returns something like database/backend.go
-    " return expand("%:h:t") . '/' .expand('%:t')
-    return expand('%:f')
+    "return expand("%:h:t") . '/' .expand('%:t')
+    return expand("%-.50F")
 endfunction
 
 " Add diagnostic info for https://github.com/itchyny/getline.vim
+" Evan's
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'readonly': 'LightlineReadonly',
       \   'filename': 'FilenameForLightline'
       \ },
       \ }
@@ -531,10 +485,15 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" 2020-09-17
+" Copied from Evan https://github.com/evanphx/dotfiles/commit/0283eab9d0334d14da10e8f966d876de8696419e
+let g:coc_snippet_next = '<tab>'
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -544,25 +503,32 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" from Evan:
+map <leader>d :<C-u>call CocActionAsync("jumpDefinition", "vsplit")<CR>
 
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+map <leader>dv :<C-u>call CocActionAsync("jumpDefinition", "vsplit")<CR>
 " au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>i <Plug>(go-info)
-
-
+" au FileType go nmap <Leader>i <Plug>(go-info)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+map <leader>i :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -591,57 +557,79 @@ augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
+  " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap for do codeAction of current line
+" Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
+" Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Create mappings for function text object, requires document symbols feature of languageserver.
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
+" Use <TAB> for selections ranges.
+" NOTE: Requires 'textDocument/selectionRange' support from the language server.
+" coc-tsserver, coc-python are the examples of servers that support it.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
 
-" Use `:Format` to format current buffer
+" Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-" Use `:Fold` to fold current buffer
+" Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" Add `:OR` command for organize imports of the current buffer.
+" command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{StatusDiagnostic()}%{get(b:,'coc_current_function','')}
 
-" Using CocList
-" Show all diagnostics
+""" status line function
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+endfunction
+""" end status line function
+
+" Mappings using CoCList:
+" Show all diagnostics.
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
+" Manage extensions.
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
+" Show commands.
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
+" Find symbol of current document.
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
+" Search workspace symbols.
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
+" Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " -------------------------------------------------------------------------------------------------
@@ -652,10 +640,106 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " let g:coc_enable_locationlist = 0
 autocmd User CocLocationsChange CocList --normal -A location
 
-
 " LanguageClient things: https://github.com/autozimu/LanguageClient-neovim
 
 " deoplete and LanguageClient-neovim via vim-plug and the follow config for LC
-let g:LanguageClient_serverCommands = {
-      \ 'go': ['/Users/clint/Go/bin/gopls'],
-      \ }
+" Redundant with coc-go
+" let g:LanguageClient_serverCommands = {
+"       \ 'go': ['/Users/clint/Go/bin/gopls'],
+"       \ }
+
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_virtualTextPrefix = ''
+let g:LanguageClient_loggingFile =  expand('/Users/clint/LanguageClient.log')
+let g:LanguageClient_serverStderr = expand('/Users/clint/LanguageServer.log')
+
+" -------------------------------------------------------------------------------------------------
+" begin things lifted from Evan's vimrc
+" -------------------------------------------------------------------------------------------------
+
+set wildmenu     " fancy command completion menu!
+set wildmode=list:longest
+set autoindent " automatically indent new lines
+set expandtab     " no tabs, just spaces kthx.
+
+"set list                     " show whitespace
+set listchars=tab:»·,trail:· " show tabs and trailing spaces
+set listchars+=extends:»     " show a » when a line goes off the right
+                             " edge of the screen
+set listchars+=precedes:«    " show a « when a line goes off the left
+                             " edge of the screen
+
+" only show the menu on completions
+set completeopt=menu
+
+set hlsearch   " highlight searches
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+packloadall
+silent! helptags ALL
+
+" -------------------------------------------------------------------------------------------------
+" end things lifted from Evan's vimrc
+" -------------------------------------------------------------------------------------------------
+
+" ruby things
+autocmd FileType ruby set shiftwidth=2
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+set pyxversion=2
+
+" -------------------------------------------------------------------------------------------------
+" hashivim/vim-terraform things
+" -------------------------------------------------------------------------------------------------
+
+" 2020-09-17
+" Auto fmt terraform files
+autocmd BufRead,BufNewFile *.tf set filetype=terraform
+autocmd BufRead,BufNewFile *.hcl setfiletype terraform
+
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+" let g:hcl_fmt_autosave = 0
+" let g:tf_fmt_autosave = 0
+" let g:nomad_fmt_autosave = 0
+
+""""
+" tags
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
+
+
+map <leader>gt :TagbarToggle<CR>
+imap <leader>gt <esc>:TagbarToggle<CR>i
+""""
+" tags
+""""

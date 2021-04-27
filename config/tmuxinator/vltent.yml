@@ -1,7 +1,7 @@
 # ~/.tmuxinator/vltent.yml
 
-name: vlt-oss
-root: /Users/clint/go-src/vault-enterprise
+name: vltent
+root: /Users/clint/go-src/github.com/hashicorp/vault-enterprise
 
 # Optional tmux socket
 # socket_name: foo
@@ -52,8 +52,19 @@ windows:
       panes:
         - 
         - daysuntil
-  - run: 
-      layout: main-horizontal
+  - watch: 
+      # layout: main-horizontal
+      # layout: 1be4,255x56,0,0[255x37,0,0{127x37,0,0,1,127x37,128,0,3},255x18,0,38,4]]
+      layout: 1be4,255x56,0,0[255x37,0,0{127x37,0,0,1,127x37,128,0,3},255x18,0,38,4]
       panes:
         - 
+        -
+        -
+  - vault1: 
+      panes:
         - 
+        -
+  - vault2: 
+      panes:
+        - 
+        -

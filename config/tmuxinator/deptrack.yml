@@ -1,7 +1,7 @@
 # ~/.tmuxinator/deptrack.yml
 
 name: deptrack
-root: /Users/clint/Go/src/github.com/catsby/deptrack
+root: /Users/clint/go-src/github.com/catsby/deptrack
 
 # Optional tmux socket
 # socket_name: foo
@@ -32,10 +32,10 @@ startup_pane: 2
 
 windows:
   - nvim:
-      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      layout: main-horizontal
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - nvim
-        - daysuntil && envchain aws-tf $SHELL
+        - daysuntil && envchain vlt $SHELL
