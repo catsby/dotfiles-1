@@ -9,12 +9,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'wincent/command-t', {
-  \   'do': 'cd ruby/command-t/ext/command-t && rb local 2.6.5; ruby extconf.rb && make'
-  \ }
+"Plug 'wincent/command-t', {
+"  \   'do': 'cd ruby/command-t/ext/command-t && rb local 2.6.5; ruby extconf.rb && make'
+"  \ }
 	
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'fatih/vim-hclfmt'
+" Plug 'fatih/vim-hclfmt'
+Plug 'hashivim/vim-terraform'
+Plug 'dracula/vim'
 Plug 'godlygeek/tabular'
 Plug 'jayferd/ragel.vim'
 Plug 'mileszs/ack.vim'
@@ -38,28 +40,35 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'aliou/bats.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 Plug 'chriskempson/base16-vim'
-Plug 'hashivim/vim-terraform'
+Plug 'jceb/vim-hier'
+
+" nvim 0.5 things
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+
+
+" telescope dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+" telescope
+Plug 'nvim-telescope/telescope.nvim'
+
+" nvim 0.5 things
 
 Plug 'majutsushi/tagbar'
 
-
-" LanguageClient things
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-
 " (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-
-" End LC things
+" Plug 'junegunn/fzf'
 
 
 let g:plug_url_format = 'git@github.com:%s.git'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'airblade/vim-gitgutter'
 Plug 'jxnblk/vim-mdx-js'
 unlet g:plug_url_format
