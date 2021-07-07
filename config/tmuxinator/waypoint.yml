@@ -22,7 +22,7 @@ root: /Users/clint/go-src/github.com/hashicorp/waypoint
 #on_project_stop: echo "on_project_stop"
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: envchain vlt $SHELL
+pre_window: envchain waypoint $SHELL
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -42,13 +42,23 @@ pre_window: envchain vlt $SHELL
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t stuff
 
-
 windows:
   - core: 
-      layout: main-horizontal
+      # layout: main-horizontal
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
         - 
-        - daysuntil
+        - daysuntil && doormat --smoke-test
+  - sdk: 
+      #layout: main-horizontal
+      layout: c6ee,316x71,0,0[316x44,0,0,0,316x26,0,45,1]
+      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
+      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
+      # synchronize: after
+      root: /Users/clint/go-src/github.com/hashicorp/waypoint-plugin-sdk
+      panes:
+        - 
+        - 
