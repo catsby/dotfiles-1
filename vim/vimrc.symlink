@@ -297,9 +297,9 @@ let g:go_highlight_generate_tags = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vim-go alternate things
-map <leader>gae :<C-u>call go#alternate#Switch(0, "edit")<CR>
-map <leader>gas :<C-u>call go#alternate#Switch(0, "split")<CR>
-map <leader>gav :<C-u>call go#alternate#Switch(0, "vsplit")<CR>
+" map <leader>gae :<C-u>call go#alternate#Switch(0, "edit")<CR>
+" map <leader>gas :<C-u>call go#alternate#Switch(0, "split")<CR>
+" map <leader>gav :<C-u>call go#alternate#Switch(0, "vsplit")<CR>
 
 " disable cursor keys in normal mode
 map <Left>  :echo "no!"<cr>
