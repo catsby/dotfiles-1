@@ -25,19 +25,9 @@ export PATH=$PATH:$uPath
 export PATH=$PATH:"/Applications/VMware Fusion.app/Contents/Library"
 
 # add protocol buffers - use protoc in Vault or specific version
-# export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.7.0-rc-2-osx-x86_64/bin
-export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.1-osx-x86_64/bin
-# export PATH=$PATH:/Users/clint/protocolbuff/protoc-3.6.0-osx-x86_64/bin
-
-# from guide on grpc
-# -- replaced by "brew install protobuf"
-# export PATH=$PATH:/Users/clint/.local/protoc-3.12.0-osx-x86_64/bin
-
-
-export PKG_CONFIG_PATH="/Users/clint/go-src/vault-plugin-database-oracle:$PKG_CONFIG_PATH:/Users/clint/go-src/vault-plugin-database-oracle
-/"
-
-export LD_LIBRARY_PATH=/Users/clint/Downloads/instantclient_19_3
-export PKG_CONFIG_PATH=/Users/clint/Downloads/instantclient_19_3
+export PATH=$PATH:/Users/clint/.local/bin
 
 GOPRIVATE=github.com/hashicorp
+
+# nix things
+if [ -e /Users/clint/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/clint/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
